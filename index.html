@@ -527,6 +527,20 @@
                         </div>
                     </div>
 
+                    <div class="grid grid-cols-2 gap-2 mb-2 border-t border-slate-100 pt-2">
+                        <div>
+                            <label class="block text-[11px] font-bold text-cozy-purple-text mb-1">ช่วงวัย (Age)</label>
+                            <select id="abg_age" class="w-full rounded-lg border-slate-200 shadow-sm focus:border-cozy-purple focus:ring-cozy-purple p-1.5 border outline-none transition bg-slate-50 focus:bg-white text-[13px] cursor-pointer">
+                                <option value="adult" selected>Adult</option>
+                                <option value="pediatric">Pediatric</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-[11px] font-bold text-cozy-purple-text mb-1">Dehydration (%)</label>
+                            <input type="number" id="abg_dehyd" step="1" value="0" class="w-full rounded-lg border-slate-200 shadow-sm focus:border-cozy-purple focus:ring-cozy-purple p-1.5 border outline-none transition bg-slate-50 focus:bg-white text-sm font-bold text-cozy-purple-dark">
+                        </div>
+                    </div>
+
                     <div class="grid grid-cols-2 gap-2">
                         <div>
                             <label class="block text-[11px] font-bold text-cozy-purple-text mb-1">Sample</label>
@@ -576,19 +590,43 @@
                         <div class="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1 border-b border-slate-200 pb-1">Electrolytes & Chem (Optional)</div>
                         <div class="grid grid-cols-3 gap-2">
                             <div>
-                                <label class="block text-xs font-bold text-slate-600 mb-1">Na⁺</label>
+                                <label class="block text-[11px] font-bold text-slate-600 mb-1 leading-tight">Na⁺ <span class="text-[9px] text-slate-400 font-normal">(140-155)</span></label>
                                 <input type="number" id="abg_na" step="1" class="w-full rounded-lg border-slate-200 shadow-sm focus:border-cozy-purple p-1.5 border outline-none font-bold text-sm bg-white">
                             </div>
                             <div>
-                                <label class="block text-xs font-bold text-slate-600 mb-1">K⁺</label>
+                                <label class="block text-[11px] font-bold text-slate-600 mb-1 leading-tight">K⁺ <span class="text-[9px] text-slate-400 font-normal">(3.5-5.5)</span></label>
                                 <input type="number" id="abg_k" step="0.1" class="w-full rounded-lg border-slate-200 shadow-sm focus:border-cozy-purple p-1.5 border outline-none font-bold text-sm bg-white">
                             </div>
                             <div>
-                                <label class="block text-xs font-bold text-slate-600 mb-1">Cl⁻</label>
+                                <label class="block text-[11px] font-bold text-slate-600 mb-1 leading-tight">Cl⁻ <span class="text-[9px] text-slate-400 font-normal">(105-120)</span></label>
                                 <input type="number" id="abg_cl" step="1" class="w-full rounded-lg border-slate-200 shadow-sm focus:border-cozy-purple p-1.5 border outline-none font-bold text-sm bg-white">
                             </div>
                         </div>
-                        <div class="grid grid-cols-3 gap-2 mt-2">
+                        <div class="grid grid-cols-2 gap-2 mt-2 border-t border-slate-200/50 pt-2">
+                            <div>
+                                <label class="block text-[11px] font-bold text-slate-600 mb-1 leading-tight">iCa²⁺ <span class="text-[9px] text-slate-400 font-normal">(1.1-1.4 mmol/L)</span></label>
+                                <input type="number" id="abg_ica" step="0.01" class="w-full rounded-lg border-slate-200 shadow-sm focus:border-cozy-purple p-1.5 border outline-none font-bold text-sm bg-white">
+                            </div>
+                            <div>
+                                <label class="block text-[11px] font-bold text-slate-600 mb-1 leading-tight">Mg²⁺ <span class="text-[9px] text-slate-400 font-normal">(0.4-0.6 mmol/L)</span></label>
+                                <input type="number" id="abg_mg" step="0.01" class="w-full rounded-lg border-slate-200 shadow-sm focus:border-cozy-purple p-1.5 border outline-none font-bold text-sm bg-white">
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-3 gap-2 mt-2 border-t border-slate-200/50 pt-2">
+                            <div>
+                                <label class="block text-[10px] font-bold text-slate-600 mb-1 leading-none">Albumin (Opt)<br><span class="font-normal text-[9px]">g/dL</span></label>
+                                <input type="number" id="abg_alb" step="0.1" class="w-full rounded-lg border-slate-200 shadow-sm focus:border-cozy-purple p-1.5 border outline-none font-bold text-sm bg-white" placeholder="Adjust AG">
+                            </div>
+                            <div>
+                                <label class="block text-[10px] font-bold text-slate-600 mb-1 leading-none">Phosphorus (Opt)<br><span class="font-normal text-[9px]">mg/dL</span></label>
+                                <input type="number" id="abg_phos" step="0.1" class="w-full rounded-lg border-slate-200 shadow-sm focus:border-cozy-purple p-1.5 border outline-none font-bold text-sm bg-white" placeholder="Adjust AG">
+                            </div>
+                            <div>
+                                <label class="block text-[10px] font-bold text-slate-600 mb-1 leading-none">Lactate (Opt)<br><span class="font-normal text-[9px]">mmol/L</span></label>
+                                <input type="number" id="abg_lac" step="0.1" class="w-full rounded-lg border-slate-200 shadow-sm focus:border-cozy-purple p-1.5 border outline-none font-bold text-sm bg-white" placeholder="< 2.5">
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-3 gap-2 mt-2 border-t border-slate-200/50 pt-2">
                             <div>
                                 <label class="block text-xs font-bold text-slate-600 mb-1">BUN</label>
                                 <input type="number" id="abg_bun" step="1" class="w-full rounded-lg border-slate-200 shadow-sm focus:border-cozy-purple p-1.5 border outline-none font-bold text-sm bg-white" placeholder="mg/dL">
@@ -600,16 +638,6 @@
                             <div>
                                 <label class="block text-[10px] font-bold text-slate-600 mb-1 leading-none pt-0.5">Meas. Osm</label>
                                 <input type="number" id="abg_osm" step="1" class="w-full rounded-lg border-slate-200 shadow-sm focus:border-cozy-purple p-1.5 border outline-none font-bold text-sm bg-white" placeholder="mOsm/kg">
-                            </div>
-                        </div>
-                        <div class="grid grid-cols-2 gap-2 mt-2 border-t border-slate-200/50 pt-2">
-                            <div>
-                                <label class="block text-[10px] font-bold text-slate-600 mb-1 leading-none">Albumin (Opt)<br><span class="font-normal text-[9px]">g/dL</span></label>
-                                <input type="number" id="abg_alb" step="0.1" class="w-full rounded-lg border-slate-200 shadow-sm focus:border-cozy-purple p-1.5 border outline-none font-bold text-sm bg-white" placeholder="Adjust AG">
-                            </div>
-                            <div>
-                                <label class="block text-[10px] font-bold text-slate-600 mb-1 leading-none">Phosphorus (Opt)<br><span class="font-normal text-[9px]">mg/dL</span></label>
-                                <input type="number" id="abg_phos" step="0.1" class="w-full rounded-lg border-slate-200 shadow-sm focus:border-cozy-purple p-1.5 border outline-none font-bold text-sm bg-white" placeholder="Adjust AG">
                             </div>
                         </div>
                     </div>
@@ -629,26 +657,74 @@
             </div>
         </div>
 
-    </div>
-
-    <div class="max-w-[1600px] mx-auto mt-6 mb-12">
-        <div id="summaryBox" class="bg-white p-6 rounded-2xl shadow-md border border-cozy-blue/20 hidden">
-            <div class="flex items-center justify-between mb-4 border-b border-slate-100 pb-3">
-                <h3 class="font-bold text-cozy-blue-dark text-lg flex items-center gap-2">
-                    <svg class="text-cozy-blue" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-                    สรุปรายการยาที่เลือก (Summary)
-                </h3>
-                <button onclick="copySummary(event)" class="bg-cozy-blue hover:bg-cozy-blue-dark text-white py-2 px-4 rounded-xl font-bold transition shadow-sm flex items-center gap-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-                    คัดลอก (Copy)
-                </button>
+        <!-- ========================================== -->
+        <!-- COLUMN 6: SQAB ANALYSIS                    -->
+        <!-- ========================================== -->
+        <div class="w-full bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+            <div class="bg-cozy-peach p-4 text-center">
+                <h2 class="text-lg font-bold text-white flex items-center justify-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+                    SQAB Analysis
+                </h2>
             </div>
-            <textarea id="summaryText" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-4 text-sm font-medium text-slate-700 outline-none focus:ring-2 focus:ring-cozy-blue focus:border-cozy-blue transition" rows="3"></textarea>
-            <p class="text-xs font-semibold text-slate-500 mt-3 flex items-start gap-1.5">
-                <svg class="shrink-0 mt-0.5 text-cozy-blue" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
-                เคล็ดลับ: สามารถพิมพ์แก้ไขหรือเพิ่มคำสั่งพิเศษ (เช่น pm, pc, w/m) ลงในกล่องข้อความก่อนกดคัดลอกได้เลยครับ
-            </p>
+            <div class="p-4">
+                <button onclick="pullFrom6Steps()" class="text-[10px] text-cozy-peach-dark underline text-right w-full mb-1.5 flex justify-end items-center gap-1 hover:text-cozy-peach transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    ดึงค่าจากช่อง 6-Steps ด้านซ้าย
+                </button>
+                <div class="space-y-3">
+                    <div class="grid grid-cols-2 gap-2">
+                        <div>
+                            <label class="block text-[11px] font-bold text-cozy-peach-text mb-1">ชนิดสัตว์</label>
+                            <select id="sqab_species" class="w-full rounded-lg border-slate-200 shadow-sm focus:border-cozy-peach focus:ring-cozy-peach p-1.5 border outline-none text-[13px] bg-slate-50 cursor-pointer">
+                                <option value="dog">🐶 สุนัข</option>
+                                <option value="cat">🐱 แมว</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-[11px] font-bold text-cozy-peach-text mb-1">Measured BE</label>
+                            <input type="number" id="sqab_be" step="0.1" class="w-full rounded-lg border-slate-200 shadow-sm focus:border-cozy-peach focus:ring-cozy-peach p-1.5 border outline-none text-sm font-bold bg-white text-cozy-peach-dark" placeholder="mEq/L">
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-2 mt-2">
+                        <div>
+                            <label class="block text-[11px] font-bold text-cozy-peach-text mb-1">Na⁺</label>
+                            <input type="number" id="sqab_na" step="0.1" class="w-full rounded-lg border-slate-200 shadow-sm focus:border-cozy-peach focus:ring-cozy-peach p-1.5 border outline-none text-sm font-bold bg-white text-cozy-peach-dark" placeholder="mEq/L">
+                        </div>
+                        <div>
+                            <label class="block text-[11px] font-bold text-cozy-peach-text mb-1">Cl⁻</label>
+                            <input type="number" id="sqab_cl" step="0.1" class="w-full rounded-lg border-slate-200 shadow-sm focus:border-cozy-peach focus:ring-cozy-peach p-1.5 border outline-none text-sm font-bold bg-white text-cozy-peach-dark" placeholder="mEq/L">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-2 mt-2">
+                        <div>
+                            <label class="block text-[11px] font-bold text-cozy-peach-text mb-1">Albumin</label>
+                            <input type="number" id="sqab_alb" step="0.1" class="w-full rounded-lg border-slate-200 shadow-sm focus:border-cozy-peach focus:ring-cozy-peach p-1.5 border outline-none text-sm font-bold bg-white text-cozy-peach-dark" placeholder="g/dL">
+                        </div>
+                        <div>
+                            <label class="block text-[11px] font-bold text-cozy-peach-text mb-1">Phosphate</label>
+                            <input type="number" id="sqab_phos" step="0.1" class="w-full rounded-lg border-slate-200 shadow-sm focus:border-cozy-peach focus:ring-cozy-peach p-1.5 border outline-none text-sm font-bold bg-white text-cozy-peach-dark" placeholder="mg/dL">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 gap-2 mt-2">
+                        <div>
+                            <label class="block text-[11px] font-bold text-cozy-peach-text mb-1">Lactate</label>
+                            <input type="number" id="sqab_lac" step="0.1" class="w-full rounded-lg border-slate-200 shadow-sm focus:border-cozy-peach focus:ring-cozy-peach p-1.5 border outline-none text-sm font-bold bg-white text-cozy-peach-dark" placeholder="mmol/L">
+                        </div>
+                    </div>
+
+                    <button onclick="calculateSQAB()" class="w-full bg-cozy-peach hover:bg-cozy-peach-dark text-white font-bold py-2.5 px-4 rounded-xl shadow-sm transition-colors flex items-center justify-center gap-2 mt-3 text-sm">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+                        วิเคราะห์ SQAB
+                    </button>
+                </div>
+                <div id="sqab-results" class="mt-4 space-y-2 hidden text-sm"></div>
+            </div>
         </div>
+
     </div>
 
     <script>
@@ -2264,6 +2340,210 @@
         }
 
         /* ========================================================
+           SQAB (STEWART APPROACH) CALCULATOR LOGIC
+        ======================================================== */
+        function pullFrom6Steps() {
+            document.getElementById('sqab_species').value = document.getElementById('abg_species').value;
+            document.getElementById('sqab_na').value = document.getElementById('abg_na').value;
+            document.getElementById('sqab_cl').value = document.getElementById('abg_cl').value;
+            document.getElementById('sqab_alb').value = document.getElementById('abg_alb').value;
+            document.getElementById('sqab_phos').value = document.getElementById('abg_phos').value;
+            document.getElementById('sqab_lac').value = document.getElementById('abg_lac').value;
+        }
+
+        function calculateSQAB() {
+            const resDiv = document.getElementById('sqab-results');
+            resDiv.classList.add('hidden');
+            
+            const sp = document.getElementById('sqab_species').value;
+            const BE = parseFloat(document.getElementById('sqab_be').value);
+            const Na = parseFloat(document.getElementById('sqab_na').value);
+            const Cl = parseFloat(document.getElementById('sqab_cl').value);
+            const Alb = parseFloat(document.getElementById('sqab_alb').value);
+            const Phos = parseFloat(document.getElementById('sqab_phos').value);
+            const Lac = parseFloat(document.getElementById('sqab_lac').value);
+
+            if(isNaN(BE) || isNaN(Na) || isNaN(Cl) || isNaN(Alb) || isNaN(Phos) || isNaN(Lac)) {
+                resDiv.innerHTML = `<div class="bg-red-50 text-red-600 p-2 rounded text-xs font-bold border border-red-200">กรุณากรอกข้อมูลให้ครบทุกช่องเพื่อวิเคราะห์ SQAB ครับ</div>`;
+                resDiv.classList.remove('hidden');
+                return;
+            }
+
+            // Reference Values
+            const ref = {
+                dog: { Na: 146, Cl: 110, Alb: 3.0, Phos: 4.0 },
+                cat: { Na: 153, Cl: 118, Alb: 3.0, Phos: 4.5 }
+            };
+            const r = ref[sp];
+
+            // 1. Free Water Effect (BE_fw) -> Na
+            let fw_factor = sp === 'dog' ? 0.25 : 0.22;
+            const BE_fw = fw_factor * (Na - r.Na);
+            
+            // 2. Chloride Effect (BE_Cl)
+            const Cl_corr = Cl * (r.Na / Na);
+            const BE_Cl = r.Cl - Cl_corr;
+
+            // 3. Albumin Effect (BE_Alb)
+            const BE_Alb = 3.7 * (r.Alb - Alb);
+
+            // 4. Phosphate Effect (BE_Phos)
+            const BE_Phos = 0.6 * (r.Phos - Phos);
+
+            // 5. Lactate Effect (BE_Lac)
+            const BE_Lac = -Lac;
+
+            // 6. Unmeasured Anions (BE_UA)
+            const sum_BE = BE_fw + BE_Cl + BE_Alb + BE_Phos + BE_Lac;
+            const BE_UA = BE - sum_BE;
+
+            // Generate Dynamic Interpretation
+            let acidCauses = [];
+            let alkCauses = [];
+            let diffDiag = [];
+            let txPlan = [];
+
+            // BE_fw (Na)
+            if (BE_fw <= -1.0) { 
+                acidCauses.push("Hyponatremia"); 
+                diffDiag.push("<b>Hyponatremia:</b> GI loss (Vomiting/Diarrhea), Diuretics, Hypoadrenocorticism (Addison's), Third space loss.");
+                txPlan.push("<b>Hyponatremia:</b> Correct Na deficit slowly (ไม่เกิน 10-12 mEq/L/day) ด้วยสารน้ำที่เหมาะสม.");
+            }
+            else if (BE_fw >= 1.0) { 
+                alkCauses.push("Hypernatremia"); 
+                diffDiag.push("<b>Hypernatremia:</b> Free water loss (Diabetes insipidus, Panting), Excessive Na supplementation.");
+                txPlan.push("<b>Hypernatremia:</b> Replace Free Water Deficit (FWD) ช้าๆ เพื่อป้องกัน Cerebral edema.");
+            }
+
+            // BE_Cl (Chloride)
+            if (BE_Cl <= -1.0) { 
+                acidCauses.push("Hyperchloremia"); 
+                diffDiag.push("<b>Hyperchloremia:</b> ได้รับ 0.9% NaCl มากเกินไป (Iatrogenic), GI loss of HCO₃⁻ (Severe diarrhea), Renal Tubular Acidosis (RTA).");
+                txPlan.push("<b>Hyperchloremia:</b> เปลี่ยนไปใช้ Balanced crystalloids (LRS, Acetar, Plasmalyte) แทน 0.9% NaCl, และรักษาภาวะเสียด่าง.");
+            }
+            else if (BE_Cl >= 1.0) { 
+                alkCauses.push("Hypochloremia"); 
+                diffDiag.push("<b>Hypochloremia:</b> อาเจียนหรือสูญเสียกรดทางกระเพาะอาหาร (Gastric loss), Loop diuretics (Furosemide).");
+                txPlan.push("<b>Hypochloremia:</b> ให้ 0.9% NaCl เพื่อเติม Cl⁻ และพิจารณาเสริม KCl ในสารน้ำ.");
+            }
+
+            // BE_Alb (Albumin)
+            if (BE_Alb <= -1.0) { 
+                acidCauses.push("Hyperalbuminemia"); 
+                diffDiag.push("<b>Hyperalbuminemia:</b> Dehydration (Hemoconcentration).");
+                txPlan.push("<b>Hyperalbuminemia:</b> Fluid therapy (Rehydration).");
+            }
+            else if (BE_Alb >= 1.0) { 
+                alkCauses.push("Hypoalbuminemia"); 
+                diffDiag.push("<b>Hypoalbuminemia:</b> Protein-Losing Enteropathy (PLE), Protein-Losing Nephropathy (PLN), Hepatic insufficiency, Hemorrhage.");
+                txPlan.push("<b>Hypoalbuminemia:</b> รักษาโรคปฐมภูมิ, พิจารณา Plasma/Colloid transfusion หรือโภชนาการหากรุนแรง.");
+            }
+
+            // BE_Phos (Phosphate)
+            if (BE_Phos <= -1.0) { 
+                acidCauses.push("Hyperphosphatemia"); 
+                diffDiag.push("<b>Hyperphosphatemia:</b> AKI/CKD, Urethral obstruction, Uroabdomen, Phosphate enema toxicity.");
+                txPlan.push("<b>Hyperphosphatemia:</b> Fluid diuresis (0.9% NaCl), ให้ Phosphate binders พร้อมมื้ออาหาร.");
+            }
+            else if (BE_Phos >= 1.0) { 
+                alkCauses.push("Hypophosphatemia"); 
+                diffDiag.push("<b>Hypophosphatemia:</b> Refeeding syndrome, DKA (Insulin therapy), Respiratory alkalosis.");
+                txPlan.push("<b>Hypophosphatemia:</b> เสริม Potassium/Sodium Phosphate ทาง IV CRI อย่างระมัดระวัง.");
+            }
+
+            // BE_Lac (Lactate)
+            if (BE_Lac <= -1.0) { 
+                acidCauses.push("Hyperlactatemia"); 
+                diffDiag.push("<b>Hyperlactatemia (Type A/B):</b> Tissue hypoperfusion (Shock, Severe dehydration), Sepsis, GDV, Hepatic failure.");
+                txPlan.push("<b>Hyperlactatemia:</b> Fluid resuscitation อย่างเร่งด่วน, Oxygen therapy, รักษาต้นเหตุของ Shock/Sepsis.");
+            }
+
+            // BE_UA (Unmeasured Anions)
+            if (BE_UA <= -1.0) { 
+                acidCauses.push("Unmeasured Anions (UA)"); 
+                diffDiag.push("<b>High UA:</b> Uremic toxins (Renal failure), Ketones (DKA), Ethylene glycol toxicity, Salicylate toxicity (GOLD MARKeT).");
+                txPlan.push("<b>High UA:</b> Fluid diuresis, Insulin therapy (ถ้าเป็น DKA), Specific antidotes (ถ้าโดนสารพิษ), Dialysis (ถ้า AKI รุนแรง).");
+            }
+            else if (BE_UA >= 1.0) {
+                alkCauses.push("Low Unmeasured Anions");
+            }
+
+            // Fallbacks
+            if(acidCauses.length === 0) acidCauses.push("ไม่มี (หรือน้อยมากจนไม่มีนัยสำคัญ)");
+            if(alkCauses.length === 0) alkCauses.push("ไม่มี (หรือน้อยมากจนไม่มีนัยสำคัญ)");
+            if(diffDiag.length === 0) diffDiag.push("ไม่พบความผิดปกติที่เด่นชัด");
+            if(txPlan.length === 0) txPlan.push("Supportive care ตามอาการ");
+
+            const formatBE = (val, name, formula, calc) => {
+                let colorClass = 'text-emerald-600';
+                let evalText = 'Normal';
+                if (val <= -1) { colorClass = 'text-rose-600'; evalText = 'Acidosis'; }
+                else if (val >= 1) { colorClass = 'text-blue-600'; evalText = 'Alkalosis'; }
+                
+                let sign = val > 0 ? '+' : '';
+                return `
+                <div class="bg-white p-2.5 rounded border border-slate-100 flex flex-col shadow-sm">
+                    <div class="flex justify-between items-center w-full">
+                        <div class="text-[11px] font-bold text-slate-600">${name}</div>
+                        <div class="text-right">
+                            <span class="font-bold ${colorClass} text-[13px]">${sign}${val.toFixed(1)}</span>
+                            <span class="text-[9px] text-slate-400 block -mt-1 leading-tight">${evalText}</span>
+                        </div>
+                    </div>
+                    <div class="mt-1.5 pt-1.5 border-t border-slate-50 text-[9px] text-slate-500 font-medium leading-tight space-y-0.5">
+                        <div><span class="font-semibold text-slate-600">สูตร:</span> ${formula}</div>
+                        <div><span class="font-semibold text-slate-600">คำนวณ:</span> ${calc}</div>
+                    </div>
+                </div>`;
+            };
+
+            let html = `
+                <div class="bg-slate-100 p-2.5 rounded-xl border border-slate-200 mb-2">
+                    <div class="text-xs font-extrabold text-slate-700 border-b border-slate-200 pb-1 mb-2 flex justify-between">
+                        <span>Base Excess Components</span>
+                        <span class="text-[10px] bg-slate-700 text-white px-1.5 rounded">Measured BE: ${BE > 0 ? '+' : ''}${BE.toFixed(1)}</span>
+                    </div>
+                    <div class="space-y-1.5">
+                        ${formatBE(BE_fw, '1. Free Water (Na⁺)', `${fw_factor} × (Patient Na - Normal Na)`, `${fw_factor} × (${Na} - ${r.Na})`)}
+                        ${formatBE(BE_Cl, '2. Chloride (Cl⁻)', 'Normal Cl - Corrected Cl [Meas. Cl × (Normal Na / Patient Na)]', `${r.Cl} - [${Cl} × (${r.Na} / ${Na})] = ${r.Cl} - ${Cl_corr.toFixed(1)}`)}
+                        ${formatBE(BE_Alb, '3. Albumin (Atot)', '3.7 × (Normal Alb - Patient Alb)', `3.7 × (${r.Alb.toFixed(1)} - ${Alb})`)}
+                        ${formatBE(BE_Phos, '4. Phosphate (Atot)', '0.6 × (Normal Phos - Patient Phos)', `0.6 × (${r.Phos.toFixed(1)} - ${Phos})`)}
+                        ${formatBE(BE_Lac, '5. Lactate', '-Patient Lactate', `-${Lac}`)}
+                        ${formatBE(BE_UA, '6. Unmeasured Anions (UA)', 'Measured BE - (Sum of effect 1 to 5)', `${BE} - (${sum_BE.toFixed(1)})`)}
+                    </div>
+                </div>
+                
+                <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-200 text-[10px] text-slate-600 space-y-1.5 shadow-sm">
+                    <div class="font-bold text-slate-700 border-b border-slate-200 pb-1 mb-1.5 flex items-center gap-1">
+                        <svg class="shrink-0 text-cozy-peach-dark" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                        สรุปผลการวิเคราะห์ SQAB
+                    </div>
+                    <div class="mb-1 leading-tight">👉 <b class="text-rose-600">Acidosis</b> ในตัวนี้เกิดจาก Effect ของ: <span class="font-semibold text-slate-800">${acidCauses.join(', ')}</span></div>
+                    <div class="mb-2 leading-tight">👉 <b class="text-blue-600">Alkalosis</b> ในตัวนี้เกิดจาก Effect ของ: <span class="font-semibold text-slate-800">${alkCauses.join(', ')}</span></div>
+                    
+                    <div class="bg-amber-50 p-2 rounded-lg border border-amber-100 mt-2">
+                        <div class="font-bold text-amber-800 mb-1 border-b border-amber-200/50 pb-1 flex items-center gap-1">
+                            <svg class="shrink-0" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                            Differential Diagnosis
+                        </div>
+                        <ul class="list-disc pl-4 space-y-0.5 text-amber-900">${diffDiag.map(item => `<li>${item}</li>`).join('')}</ul>
+                    </div>
+
+                    <div class="bg-emerald-50 p-2 rounded-lg border border-emerald-100 mt-2">
+                        <div class="font-bold text-emerald-800 mb-1 border-b border-emerald-200/50 pb-1 flex items-center gap-1">
+                            <svg class="shrink-0" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                            Suggested Treatment / Management
+                        </div>
+                        <ul class="list-disc pl-4 space-y-0.5 text-emerald-900">${txPlan.map(item => `<li>${item}</li>`).join('')}</ul>
+                    </div>
+                </div>
+            `;
+
+            resDiv.innerHTML = html;
+            resDiv.classList.remove('hidden');
+        }
+
+        /* ========================================================
            ACID-BASE / BLOOD GAS 6-STEP CALCULATOR LOGIC
         ======================================================== */
         function calculateABG() {
@@ -2279,13 +2559,26 @@
             const HCO3 = parseFloat(document.getElementById('abg_hco3').value);
             const pO2 = parseFloat(document.getElementById('abg_po2').value);
             const FiO2 = parseFloat(document.getElementById('abg_fio2').value) || 21;
-            const onset = document.getElementById('abg_onset').value;
             const w = parseFloat(document.getElementById('abg_weight').value);
+            const onset = document.getElementById('abg_onset').value;
+            
+            const age = document.getElementById('abg_age').value;
+            const dehyd = parseFloat(document.getElementById('abg_dehyd').value) || 0;
+            
+            const Na = parseFloat(document.getElementById('abg_na').value);
+            const K = parseFloat(document.getElementById('abg_k').value);
+            const Cl = parseFloat(document.getElementById('abg_cl').value);
+            const iCa = parseFloat(document.getElementById('abg_ica').value);
+            const Mg = parseFloat(document.getElementById('abg_mg').value);
+            const Alb = parseFloat(document.getElementById('abg_alb').value);
+            const Phos = parseFloat(document.getElementById('abg_phos').value);
+            const Lac = parseFloat(document.getElementById('abg_lac').value);
+            const BUN = parseFloat(document.getElementById('abg_bun').value);
+            const Glu = parseFloat(document.getElementById('abg_glu').value);
+            const measOsm = parseFloat(document.getElementById('abg_osm').value);
 
-            if (isNaN(pH) || isNaN(pCO2) || isNaN(HCO3)) {
-                document.getElementById('abg-error-text').textContent = "กรุณากรอก pH, pCO2 และ HCO3 ให้ครบเพื่อเริ่มประเมิน";
-                errDiv.classList.remove('hidden'); return;
-            }
+            // เช็คว่ามีค่า ABG ขั้นต้นครบไหม เพื่อประเมิน 3 Steps แรก
+            let hasABG = !isNaN(pH) && !isNaN(pCO2) && !isNaN(HCO3);
 
             // Reference Values
             let ref = {};
@@ -2314,7 +2607,7 @@
             };
 
             // STEP 0
-            if (type === 'arterial') {
+            if (type === 'arterial' && hasABG) {
                 let oxyHtml = "";
                 if (!isNaN(pO2)) {
                     if (pO2 < 80) oxyHtml += `<span class="text-rose-600">Hypoxemia</span> (pO₂ ${pO2.toFixed(2)} < 80 mmHg)<br>`;
@@ -2335,49 +2628,58 @@
                 else ventHtml = `<span class="text-emerald-600">Normal Ventilation</span>`;
 
                 html += stepBlock(0, "Oxygenation & Ventilation", `${ventHtml}<br><div class="mt-1.5">${oxyHtml}</div>`);
+            } else if (type === 'arterial') {
+                html += stepBlock(0, "Oxygenation & Ventilation", "<span class='text-slate-400'>ข้ามการประเมิน (กรอกข้อมูลไม่ครบ)</span>");
             }
 
             // STEP 1
             let step1_res = "", step1_alert = "normal", acidemia = false, alkalemia = false, normalPH = false;
-            if (pH < ref.pH[0]) { acidemia = true; step1_res = `pH ${pH.toFixed(2)} ➡️ <b class="text-rose-600">Acidemia (เลือดเป็นกรด)</b>`; step1_alert = "red"; }
-            else if (pH > ref.pH[1]) { alkalemia = true; step1_res = `pH ${pH.toFixed(2)} ➡️ <b class="text-blue-600">Alkalemia (เลือดเป็นด่าง)</b>`; step1_alert = "blue"; }
-            else { normalPH = true; step1_res = `pH ${pH.toFixed(2)} ➡️ <b class="text-emerald-600">Normal pH (ปกติ / Mixed disorder ที่หักล้างกัน)</b>`; step1_alert = "green"; }
-            step1_res += `<br><span class="text-[10px] text-slate-500 font-medium">Ref: ${ref.pH[0].toFixed(2)} - ${ref.pH[1].toFixed(2)}</span>`;
-            html += stepBlock(1, "What's the pH?", step1_res, step1_alert);
+            if (hasABG) {
+                if (pH < ref.pH[0]) { acidemia = true; step1_res = `pH ${pH.toFixed(2)} ➡️ <b class="text-rose-600">Acidemia (เลือดเป็นกรด)</b>`; step1_alert = "red"; }
+                else if (pH > ref.pH[1]) { alkalemia = true; step1_res = `pH ${pH.toFixed(2)} ➡️ <b class="text-blue-600">Alkalemia (เลือดเป็นด่าง)</b>`; step1_alert = "blue"; }
+                else { normalPH = true; step1_res = `pH ${pH.toFixed(2)} ➡️ <b class="text-emerald-600">Normal pH (ปกติ / Mixed disorder ที่หักล้างกัน)</b>`; step1_alert = "green"; }
+                step1_res += `<br><span class="text-[10px] text-slate-500 font-medium">Ref: ${ref.pH[0].toFixed(2)} - ${ref.pH[1].toFixed(2)}</span>`;
+                html += stepBlock(1, "What's the pH?", step1_res, step1_alert);
+            } else {
+                html += stepBlock(1, "What's the pH?", "<span class='text-slate-400'>ข้ามการประเมิน (ต้องการ pH)</span>");
+            }
 
             // STEP 2
             let isHighPCO2 = pCO2 > ref.pCO2[1];
             let isLowPCO2 = pCO2 < ref.pCO2[0];
             let isHighHCO3 = HCO3 > ref.HCO3[1];
             let isLowHCO3 = HCO3 < ref.HCO3[0];
-
             let leansAcid = pH < ref.m_pH;
             let primaryArr = [];
             let primaryCodes = [];
 
-            if (acidemia || (normalPH && leansAcid)) {
-                if (isHighPCO2) { primaryArr.push("<span class='text-rose-600'>Respiratory Acidosis</span>"); primaryCodes.push('resp_acid'); }
-                if (isLowHCO3) { primaryArr.push("<span class='text-rose-600'>Metabolic Acidosis</span>"); primaryCodes.push('met_acid'); }
-            } else if (alkalemia || (normalPH && !leansAcid)) {
-                if (isLowPCO2) { primaryArr.push("<span class='text-blue-600'>Respiratory Alkalosis</span>"); primaryCodes.push('resp_alk'); }
-                if (isHighHCO3) { primaryArr.push("<span class='text-blue-600'>Metabolic Alkalosis</span>"); primaryCodes.push('met_alk'); }
-            }
-
             let step2_res = "";
-            if (primaryCodes.length === 2) {
-                step2_res = `pH และค่าแก๊สในเลือด เปลี่ยนแปลงไปในทิศทางที่เสริมกัน ➡️ <b class="text-rose-600">Mixed Disorder</b><br>`;
-                step2_res += `มีภาวะ ${primaryArr.join(' และ ')} ร่วมกัน`;
-            } else if (primaryCodes.length === 1) {
-                step2_res = `Primary Disturbance: <b class="text-slate-800">${primaryArr[0]}</b>`;
-                if (primaryCodes[0] === 'resp_acid') step2_res += `<br><span class="text-[10px] text-slate-500 font-semibold">เนื่องจากเลือดค่อนไปทางกรด และ pCO₂ สูง</span>`;
-                if (primaryCodes[0] === 'met_acid') step2_res += `<br><span class="text-[10px] text-slate-500 font-semibold">เนื่องจากเลือดค่อนไปทางกรด และ HCO₃⁻ ต่ำ</span>`;
-                if (primaryCodes[0] === 'resp_alk') step2_res += `<br><span class="text-[10px] text-slate-500 font-semibold">เนื่องจากเลือดค่อนไปทางด่าง และ pCO₂ ต่ำ</span>`;
-                if (primaryCodes[0] === 'met_alk') step2_res += `<br><span class="text-[10px] text-slate-500 font-semibold">เนื่องจากเลือดค่อนไปทางด่าง และ HCO₃⁻ สูง</span>`;
+            if (hasABG) {
+                if (acidemia || (normalPH && leansAcid)) {
+                    if (isHighPCO2) { primaryArr.push("<span class='text-rose-600'>Respiratory Acidosis</span>"); primaryCodes.push('resp_acid'); }
+                    if (isLowHCO3) { primaryArr.push("<span class='text-rose-600'>Metabolic Acidosis</span>"); primaryCodes.push('met_acid'); }
+                } else if (alkalemia || (normalPH && !leansAcid)) {
+                    if (isLowPCO2) { primaryArr.push("<span class='text-blue-600'>Respiratory Alkalosis</span>"); primaryCodes.push('resp_alk'); }
+                    if (isHighHCO3) { primaryArr.push("<span class='text-blue-600'>Metabolic Alkalosis</span>"); primaryCodes.push('met_alk'); }
+                }
+
+                if (primaryCodes.length === 2) {
+                    step2_res = `pH และค่าแก๊สในเลือด เปลี่ยนแปลงไปในทิศทางที่เสริมกัน ➡️ <b class="text-rose-600">Mixed Disorder</b><br>`;
+                    step2_res += `มีภาวะ ${primaryArr.join(' และ ')} ร่วมกัน`;
+                } else if (primaryCodes.length === 1) {
+                    step2_res = `Primary Disturbance: <b class="text-slate-800">${primaryArr[0]}</b>`;
+                    if (primaryCodes[0] === 'resp_acid') step2_res += `<br><span class="text-[10px] text-slate-500 font-semibold">เนื่องจากเลือดค่อนไปทางกรด และ pCO₂ สูง</span>`;
+                    if (primaryCodes[0] === 'met_acid') step2_res += `<br><span class="text-[10px] text-slate-500 font-semibold">เนื่องจากเลือดค่อนไปทางกรด และ HCO₃⁻ ต่ำ</span>`;
+                    if (primaryCodes[0] === 'resp_alk') step2_res += `<br><span class="text-[10px] text-slate-500 font-semibold">เนื่องจากเลือดค่อนไปทางด่าง และ pCO₂ ต่ำ</span>`;
+                    if (primaryCodes[0] === 'met_alk') step2_res += `<br><span class="text-[10px] text-slate-500 font-semibold">เนื่องจากเลือดค่อนไปทางด่าง และ HCO₃⁻ สูง</span>`;
+                } else {
+                    step2_res = "ค่า pCO₂ และ HCO₃⁻ ไม่แสดงความผิดปกติที่สอดคล้องกับ pH";
+                }
+                step2_res += `<div class="text-[10px] text-slate-500 font-medium mt-1">Ref pCO₂: ${ref.pCO2[0].toFixed(2)}-${ref.pCO2[1].toFixed(2)} | Ref HCO₃⁻: ${ref.HCO3[0].toFixed(2)}-${ref.HCO3[1].toFixed(2)}</div>`;
+                html += stepBlock(2, "Primary Disturbance", step2_res);
             } else {
-                step2_res = "ค่า pCO₂ และ HCO₃⁻ ไม่แสดงความผิดปกติที่สอดคล้องกับ pH";
+                html += stepBlock(2, "Primary Disturbance", "<span class='text-slate-400'>ข้ามการประเมิน</span>");
             }
-            step2_res += `<div class="text-[10px] text-slate-500 font-medium mt-1">Ref pCO₂: ${ref.pCO2[0].toFixed(2)}-${ref.pCO2[1].toFixed(2)} | Ref HCO₃⁻: ${ref.HCO3[0].toFixed(2)}-${ref.HCO3[1].toFixed(2)}</div>`;
-            html += stepBlock(2, "Primary Disturbance", step2_res);
 
             // STEP 3
             let step3_res = "";
@@ -2433,137 +2735,134 @@
                 return html;
             };
 
-            if (primaryCodes.length === 2) {
-                let metCode = primaryCodes.find(c => c.startsWith('met_'));
-                let respCode = primaryCodes.find(c => c.startsWith('resp_'));
-                let metHtml = metCode ? getBoxHtml(metCode, onset, ref, pCO2, HCO3, true) : "";
-                let respHtml = respCode ? getBoxHtml(respCode, onset, ref, pCO2, HCO3, true) : "";
+            if (hasABG) {
+                if (primaryCodes.length === 2) {
+                    let metCode = primaryCodes.find(c => c.startsWith('met_'));
+                    let respCode = primaryCodes.find(c => c.startsWith('resp_'));
+                    let metHtml = metCode ? getBoxHtml(metCode, onset, ref, pCO2, HCO3, true) : "";
+                    let respHtml = respCode ? getBoxHtml(respCode, onset, ref, pCO2, HCO3, true) : "";
 
-                step3_res = `<div class="text-[11px] text-rose-700 font-bold mb-2 leading-tight">พิสูจน์ภาวะ Mixed Disorder (ไม่มีการชดเชย) โดยคำนวณ Expected ของทั้ง 2 ระบบ จะพบว่าต่างจาก Expected ทั้งคู่</div>` + metHtml + respHtml;
-            } else if (primaryCodes.length === 1) {
-                let pCode = primaryCodes[0];
-                let primaryHtml = "";
-                let secondaryCode = null;
-                let mixedEval = "";
+                    step3_res = `<div class="text-[11px] text-rose-700 font-bold mb-2 leading-tight">พิสูจน์ภาวะ Mixed Disorder (ไม่มีการชดเชย) โดยคำนวณ Expected ของทั้ง 2 ระบบ จะพบว่าต่างจาก Expected ทั้งคู่</div>` + metHtml + respHtml;
+                } else if (primaryCodes.length === 1) {
+                    let pCode = primaryCodes[0];
+                    let primaryHtml = "";
+                    let secondaryCode = null;
+                    let mixedEval = "";
 
-                if (pCode === 'met_acid') {
-                    let compIsNormal = (pCO2 >= ref.pCO2[0] && pCO2 <= ref.pCO2[1]);
-                    let status = determineStatus(compIsNormal, phIsNormal);
-                    let delta = ref.m_HCO3 - HCO3;
-                    let expPCO2 = ref.m_pCO2 - (0.70 * delta);
-                    
-                    if (pCO2 > expPCO2 + 2) {
-                        mixedEval = "<br>👉 <span class='text-rose-600 font-bold'>Mixed Disorder (Concurrent Respiratory Acidosis)</span> เนื่องจาก Actual pCO₂ สูงกว่า Expected มาก";
-                        secondaryCode = 'resp_acid';
-                    } else if (pCO2 < expPCO2 - 2) {
-                        mixedEval = "<br>👉 <span class='text-blue-600 font-bold'>Mixed Disorder (Concurrent Respiratory Alkalosis)</span> เนื่องจาก Actual pCO₂ ต่ำกว่า Expected มาก";
-                        secondaryCode = 'resp_alk';
-                    } else {
-                        mixedEval = "<br>👉 <span class='text-emerald-600 font-bold'>Appropriate Compensation (Simple Metabolic Acidosis)</span>";
+                    if (pCode === 'met_acid') {
+                        let compIsNormal = (pCO2 >= ref.pCO2[0] && pCO2 <= ref.pCO2[1]);
+                        let status = determineStatus(compIsNormal, phIsNormal);
+                        let delta = ref.m_HCO3 - HCO3;
+                        let expPCO2 = ref.m_pCO2 - (0.70 * delta);
+                        
+                        if (pCO2 > expPCO2 + 2) {
+                            mixedEval = "<br>👉 <span class='text-rose-600 font-bold'>Mixed Disorder (Concurrent Respiratory Acidosis)</span> เนื่องจาก Actual pCO₂ สูงกว่า Expected มาก";
+                            secondaryCode = 'resp_acid';
+                        } else if (pCO2 < expPCO2 - 2) {
+                            mixedEval = "<br>👉 <span class='text-blue-600 font-bold'>Mixed Disorder (Concurrent Respiratory Alkalosis)</span> เนื่องจาก Actual pCO₂ ต่ำกว่า Expected มาก";
+                            secondaryCode = 'resp_alk';
+                        } else {
+                            mixedEval = "<br>👉 <span class='text-emerald-600 font-bold'>Appropriate Compensation (Simple Metabolic Acidosis)</span>";
+                        }
+                        
+                        primaryHtml = `<div class="bg-white p-2.5 rounded border border-slate-200 mb-2 shadow-sm">
+                            <div class="text-[10px] text-slate-500 font-semibold mb-1">■ Primary Metabolic Acidosis: pCO₂ ควรลดลง 0.70 mmHg ต่อ HCO₃⁻ 1 mEq/L (↓)</div>
+                            Expected pCO₂ = ${ref.m_pCO2.toFixed(2)} - (0.70 × ${delta.toFixed(2)}) = <b>${expPCO2.toFixed(2)} ± 2</b><br>
+                            <span class="text-slate-500">(Actual pCO₂ = ${pCO2.toFixed(2)})</span><br>
+                            <div class="mt-1 border-t border-slate-100 pt-1">Status: <b class="text-slate-800">${status}</b> ${mixedEval}</div>
+                        </div>`;
                     }
-                    
-                    primaryHtml = `<div class="bg-white p-2.5 rounded border border-slate-200 mb-2 shadow-sm">
-                        <div class="text-[10px] text-slate-500 font-semibold mb-1">■ Primary Metabolic Acidosis: pCO₂ ควรลดลง 0.70 mmHg ต่อ HCO₃⁻ 1 mEq/L (↓)</div>
-                        Expected pCO₂ = ${ref.m_pCO2.toFixed(2)} - (0.70 × ${delta.toFixed(2)}) = <b>${expPCO2.toFixed(2)} ± 2</b><br>
-                        <span class="text-slate-500">(Actual pCO₂ = ${pCO2.toFixed(2)})</span><br>
-                        <div class="mt-1 border-t border-slate-100 pt-1">Status: <b class="text-slate-800">${status}</b> ${mixedEval}</div>
-                    </div>`;
-                }
-                else if (pCode === 'met_alk') {
-                    let compIsNormal = (pCO2 >= ref.pCO2[0] && pCO2 <= ref.pCO2[1]);
-                    let status = determineStatus(compIsNormal, phIsNormal);
-                    let delta = HCO3 - ref.m_HCO3;
-                    let expPCO2 = ref.m_pCO2 + (0.70 * delta);
-                    
-                    if (pCO2 > expPCO2 + 2) {
-                        mixedEval = "<br>👉 <span class='text-rose-600 font-bold'>Mixed Disorder (Concurrent Respiratory Acidosis)</span> เนื่องจาก Actual pCO₂ สูงกว่า Expected มาก";
-                        secondaryCode = 'resp_acid';
-                    } else if (pCO2 < expPCO2 - 2) {
-                        mixedEval = "<br>👉 <span class='text-blue-600 font-bold'>Mixed Disorder (Concurrent Respiratory Alkalosis)</span> เนื่องจาก Actual pCO₂ ต่ำกว่า Expected มาก";
-                        secondaryCode = 'resp_alk';
-                    } else {
-                        mixedEval = "<br>👉 <span class='text-emerald-600 font-bold'>Appropriate Compensation (Simple Metabolic Alkalosis)</span>";
+                    else if (pCode === 'met_alk') {
+                        let compIsNormal = (pCO2 >= ref.pCO2[0] && pCO2 <= ref.pCO2[1]);
+                        let status = determineStatus(compIsNormal, phIsNormal);
+                        let delta = HCO3 - ref.m_HCO3;
+                        let expPCO2 = ref.m_pCO2 + (0.70 * delta);
+                        
+                        if (pCO2 > expPCO2 + 2) {
+                            mixedEval = "<br>👉 <span class='text-rose-600 font-bold'>Mixed Disorder (Concurrent Respiratory Acidosis)</span> เนื่องจาก Actual pCO₂ สูงกว่า Expected มาก";
+                            secondaryCode = 'resp_acid';
+                        } else if (pCO2 < expPCO2 - 2) {
+                            mixedEval = "<br>👉 <span class='text-blue-600 font-bold'>Mixed Disorder (Concurrent Respiratory Alkalosis)</span> เนื่องจาก Actual pCO₂ ต่ำกว่า Expected มาก";
+                            secondaryCode = 'resp_alk';
+                        } else {
+                            mixedEval = "<br>👉 <span class='text-emerald-600 font-bold'>Appropriate Compensation (Simple Metabolic Alkalosis)</span>";
+                        }
+                        
+                        primaryHtml = `<div class="bg-white p-2.5 rounded border border-slate-200 mb-2 shadow-sm">
+                            <div class="text-[10px] text-slate-500 font-semibold mb-1">■ Primary Metabolic Alkalosis: pCO₂ ควรเพิ่มขึ้น 0.70 mmHg ต่อ HCO₃⁻ 1 mEq/L (↑)</div>
+                            Expected pCO₂ = ${ref.m_pCO2.toFixed(2)} + (0.70 × ${delta.toFixed(2)}) = <b>${expPCO2.toFixed(2)} ± 2</b><br>
+                            <span class="text-slate-500">(Actual pCO₂ = ${pCO2.toFixed(2)})</span><br>
+                            <div class="mt-1 border-t border-slate-100 pt-1">Status: <b class="text-slate-800">${status}</b> ${mixedEval}</div>
+                        </div>`;
                     }
-                    
-                    primaryHtml = `<div class="bg-white p-2.5 rounded border border-slate-200 mb-2 shadow-sm">
-                        <div class="text-[10px] text-slate-500 font-semibold mb-1">■ Primary Metabolic Alkalosis: pCO₂ ควรเพิ่มขึ้น 0.70 mmHg ต่อ HCO₃⁻ 1 mEq/L (↑)</div>
-                        Expected pCO₂ = ${ref.m_pCO2.toFixed(2)} + (0.70 × ${delta.toFixed(2)}) = <b>${expPCO2.toFixed(2)} ± 2</b><br>
-                        <span class="text-slate-500">(Actual pCO₂ = ${pCO2.toFixed(2)})</span><br>
-                        <div class="mt-1 border-t border-slate-100 pt-1">Status: <b class="text-slate-800">${status}</b> ${mixedEval}</div>
-                    </div>`;
-                }
-                else if (pCode === 'resp_acid') {
-                    let compIsNormal = (HCO3 >= ref.HCO3[0] && HCO3 <= ref.HCO3[1]);
-                    let status = determineStatus(compIsNormal, phIsNormal);
-                    let delta = pCO2 - ref.m_pCO2;
-                    let factor = onset === 'acute' ? 0.15 : 0.35;
-                    let expHCO3 = ref.m_HCO3 + (factor * delta);
-                    
-                    if (HCO3 < expHCO3 - 2) {
-                        mixedEval = "<br>👉 <span class='text-rose-600 font-bold'>Mixed Disorder (Concurrent Metabolic Acidosis)</span> เนื่องจาก Actual HCO₃⁻ ต่ำกว่า Expected มาก";
-                        secondaryCode = 'met_acid';
-                    } else if (HCO3 > expHCO3 + 2) {
-                        mixedEval = "<br>👉 <span class='text-blue-600 font-bold'>Mixed Disorder (Concurrent Metabolic Alkalosis)</span> เนื่องจาก Actual HCO₃⁻ สูงกว่า Expected มาก";
-                        secondaryCode = 'met_alk';
-                    } else {
-                        mixedEval = `<br>👉 <span class='text-emerald-600 font-bold'>Appropriate Compensation (Simple ${onset === 'acute' ? 'Acute' : 'Chronic'} Respiratory Acidosis)</span>`;
+                    else if (pCode === 'resp_acid') {
+                        let compIsNormal = (HCO3 >= ref.HCO3[0] && HCO3 <= ref.HCO3[1]);
+                        let status = determineStatus(compIsNormal, phIsNormal);
+                        let delta = pCO2 - ref.m_pCO2;
+                        let factor = onset === 'acute' ? 0.15 : 0.35;
+                        let expHCO3 = ref.m_HCO3 + (factor * delta);
+                        
+                        if (HCO3 < expHCO3 - 2) {
+                            mixedEval = "<br>👉 <span class='text-rose-600 font-bold'>Mixed Disorder (Concurrent Metabolic Acidosis)</span> เนื่องจาก Actual HCO₃⁻ ต่ำกว่า Expected มาก";
+                            secondaryCode = 'met_acid';
+                        } else if (HCO3 > expHCO3 + 2) {
+                            mixedEval = "<br>👉 <span class='text-blue-600 font-bold'>Mixed Disorder (Concurrent Metabolic Alkalosis)</span> เนื่องจาก Actual HCO₃⁻ สูงกว่า Expected มาก";
+                            secondaryCode = 'met_alk';
+                        } else {
+                            mixedEval = `<br>👉 <span class='text-emerald-600 font-bold'>Appropriate Compensation (Simple ${onset === 'acute' ? 'Acute' : 'Chronic'} Respiratory Acidosis)</span>`;
+                        }
+                        
+                        primaryHtml = `<div class="bg-white p-2.5 rounded border border-slate-200 mb-2 shadow-sm">
+                            <div class="text-[10px] text-slate-500 font-semibold mb-1">■ Primary Respiratory Acidosis (${onset}): HCO₃⁻ ควรเพิ่มขึ้น ${factor} mEq/L ต่อ pCO₂ 1 mmHg (↑)</div>
+                            Expected HCO₃⁻ = ${ref.m_HCO3.toFixed(2)} + (${factor} × ${delta.toFixed(2)}) = <b>${expHCO3.toFixed(2)} ± 2</b><br>
+                            <span class="text-slate-500">(Actual HCO₃⁻ = ${HCO3.toFixed(2)})</span><br>
+                            <div class="mt-1 border-t border-slate-100 pt-1">Status: <b class="text-slate-800">${status}</b> ${mixedEval}</div>
+                        </div>`;
                     }
-                    
-                    primaryHtml = `<div class="bg-white p-2.5 rounded border border-slate-200 mb-2 shadow-sm">
-                        <div class="text-[10px] text-slate-500 font-semibold mb-1">■ Primary Respiratory Acidosis (${onset}): HCO₃⁻ ควรเพิ่มขึ้น ${factor} mEq/L ต่อ pCO₂ 1 mmHg (↑)</div>
-                        Expected HCO₃⁻ = ${ref.m_HCO3.toFixed(2)} + (${factor} × ${delta.toFixed(2)}) = <b>${expHCO3.toFixed(2)} ± 2</b><br>
-                        <span class="text-slate-500">(Actual HCO₃⁻ = ${HCO3.toFixed(2)})</span><br>
-                        <div class="mt-1 border-t border-slate-100 pt-1">Status: <b class="text-slate-800">${status}</b> ${mixedEval}</div>
-                    </div>`;
-                }
-                else if (pCode === 'resp_alk') {
-                    let compIsNormal = (HCO3 >= ref.HCO3[0] && HCO3 <= ref.HCO3[1]);
-                    let status = determineStatus(compIsNormal, phIsNormal);
-                    let delta = ref.m_pCO2 - pCO2;
-                    let factor = onset === 'acute' ? 0.25 : 0.55;
-                    let expHCO3 = ref.m_HCO3 - (factor * delta);
-                    
-                    if (HCO3 < expHCO3 - 2) {
-                        mixedEval = "<br>👉 <span class='text-rose-600 font-bold'>Mixed Disorder (Concurrent Metabolic Acidosis)</span> เนื่องจาก Actual HCO₃⁻ ต่ำกว่า Expected มาก";
-                        secondaryCode = 'met_acid';
-                    } else if (HCO3 > expHCO3 + 2) {
-                        mixedEval = "<br>👉 <span class='text-blue-600 font-bold'>Mixed Disorder (Concurrent Metabolic Alkalosis)</span> เนื่องจาก Actual HCO₃⁻ สูงกว่า Expected มาก";
-                        secondaryCode = 'met_alk';
-                    } else {
-                        mixedEval = `<br>👉 <span class='text-emerald-600 font-bold'>Appropriate Compensation (Simple ${onset === 'acute' ? 'Acute' : 'Chronic'} Respiratory Alkalosis)</span>`;
+                    else if (pCode === 'resp_alk') {
+                        let compIsNormal = (HCO3 >= ref.HCO3[0] && HCO3 <= ref.HCO3[1]);
+                        let status = determineStatus(compIsNormal, phIsNormal);
+                        let delta = ref.m_pCO2 - pCO2;
+                        let factor = onset === 'acute' ? 0.25 : 0.55;
+                        let expHCO3 = ref.m_HCO3 - (factor * delta);
+                        
+                        if (HCO3 < expHCO3 - 2) {
+                            mixedEval = "<br>👉 <span class='text-rose-600 font-bold'>Mixed Disorder (Concurrent Metabolic Acidosis)</span> เนื่องจาก Actual HCO₃⁻ ต่ำกว่า Expected มาก";
+                            secondaryCode = 'met_acid';
+                        } else if (HCO3 > expHCO3 + 2) {
+                            mixedEval = "<br>👉 <span class='text-blue-600 font-bold'>Mixed Disorder (Concurrent Metabolic Alkalosis)</span> เนื่องจาก Actual HCO₃⁻ สูงกว่า Expected มาก";
+                            secondaryCode = 'met_alk';
+                        } else {
+                            mixedEval = `<br>👉 <span class='text-emerald-600 font-bold'>Appropriate Compensation (Simple ${onset === 'acute' ? 'Acute' : 'Chronic'} Respiratory Alkalosis)</span>`;
+                        }
+
+                        primaryHtml = `<div class="bg-white p-2.5 rounded border border-slate-200 mb-2 shadow-sm">
+                            <div class="text-[10px] text-slate-500 font-semibold mb-1">■ Primary Respiratory Alkalosis (${onset}): HCO₃⁻ ควรลดลง ${factor} mEq/L ต่อ pCO₂ 1 mmHg (↓)</div>
+                            Expected HCO₃⁻ = ${ref.m_HCO3.toFixed(2)} - (${factor} × ${delta.toFixed(2)}) = <b>${expHCO3.toFixed(2)} ± 2</b><br>
+                            <span class="text-slate-500">(Actual HCO₃⁻ = ${HCO3.toFixed(2)})</span><br>
+                            <div class="mt-1 border-t border-slate-100 pt-1">Status: <b class="text-slate-800">${status}</b> ${mixedEval}</div>
+                        </div>`;
                     }
 
-                    primaryHtml = `<div class="bg-white p-2.5 rounded border border-slate-200 mb-2 shadow-sm">
-                        <div class="text-[10px] text-slate-500 font-semibold mb-1">■ Primary Respiratory Alkalosis (${onset}): HCO₃⁻ ควรลดลง ${factor} mEq/L ต่อ pCO₂ 1 mmHg (↓)</div>
-                        Expected HCO₃⁻ = ${ref.m_HCO3.toFixed(2)} - (${factor} × ${delta.toFixed(2)}) = <b>${expHCO3.toFixed(2)} ± 2</b><br>
-                        <span class="text-slate-500">(Actual HCO₃⁻ = ${HCO3.toFixed(2)})</span><br>
-                        <div class="mt-1 border-t border-slate-100 pt-1">Status: <b class="text-slate-800">${status}</b> ${mixedEval}</div>
-                    </div>`;
-                }
+                    step3_res = primaryHtml;
 
-                step3_res = primaryHtml;
-
-                // แทรกกล่องที่ 2 หากพบว่าเป็น Mixed Disorder 
-                if (secondaryCode) {
-                    let secondaryHtml = getBoxHtml(secondaryCode, onset, ref, pCO2, HCO3, true);
-                    step3_res += `<div class="text-[11px] text-rose-700 font-bold mb-2 mt-3 leading-tight border-t border-slate-200 pt-2">พิสูจน์ภาวะ Mixed Disorder โดยคำนวณ Expected ของตัวแทรกซ้อน (จะพบว่าต่างจาก Expected เช่นกัน)</div>` + secondaryHtml;
+                    if (secondaryCode) {
+                        let secondaryHtml = getBoxHtml(secondaryCode, onset, ref, pCO2, HCO3, true);
+                        step3_res += `<div class="text-[11px] text-rose-700 font-bold mb-2 mt-3 leading-tight border-t border-slate-200 pt-2">พิสูจน์ภาวะ Mixed Disorder โดยคำนวณ Expected ของตัวแทรกซ้อน (จะพบว่าต่างจาก Expected เช่นกัน)</div>` + secondaryHtml;
+                    }
+                } else {
+                    step3_res = "<span class='text-slate-400'>ไม่พบ Primary Disturbance ที่ต้องประเมิน Compensation</span>";
                 }
+                html += stepBlock(3, "Compensation", step3_res);
             } else {
-                step3_res = "<span class='text-slate-400'>ไม่พบ Primary Disturbance ที่ต้องประเมิน Compensation</span>";
+                html += stepBlock(3, "Compensation", "<span class='text-slate-400'>ข้ามการประเมิน</span>");
             }
-            html += stepBlock(3, "Compensation", step3_res);
 
             // STEP 4 & 5
-            const Na = parseFloat(document.getElementById('abg_na').value);
-            const K = parseFloat(document.getElementById('abg_k').value);
-            const Cl = parseFloat(document.getElementById('abg_cl').value);
-            const Alb = parseFloat(document.getElementById('abg_alb').value);
-            const Phos = parseFloat(document.getElementById('abg_phos').value);
-            
             let range_AG = sp === 'dog' ? [12, 24] : [13, 27];
             let n_AG_mid = sp === 'dog' ? 18 : 20;
 
-            if (!isNaN(Na) && !isNaN(K) && !isNaN(Cl)) {
+            if (!isNaN(Na) && !isNaN(K) && !isNaN(Cl) && !isNaN(HCO3)) {
                 let AG = (Na + K) - (Cl + HCO3);
                 let step4_res = `<div class="text-[10px] text-slate-500 font-medium block mb-1">Formula: AG = (Na⁺ + K⁺) - (Cl⁻ + HCO₃⁻)</div>`;
                 step4_res += `Calculated AG = <b class="text-cozy-purple-dark text-sm">${AG.toFixed(2)}</b> mEq/L <span class="text-[10px] text-slate-500">(Normal: ${range_AG[0].toFixed(2)}-${range_AG[1].toFixed(2)})</span><br>`;
@@ -2619,15 +2918,11 @@
                 html += stepBlock(5, "Delta Gap / Ratio", step5_res);
 
             } else {
-                html += stepBlock(4, "Anion Gap", "<span class='text-slate-400'>กรุณากรอก Na⁺, K⁺, Cl⁻ เพื่อประเมิน</span>");
-                html += stepBlock(5, "Delta Ratio", "<span class='text-slate-400'>กรุณากรอก Na⁺, K⁺, Cl⁻ เพื่อประเมิน</span>");
+                html += stepBlock(4, "Anion Gap", "<span class='text-slate-400'>กรุณากรอก Na⁺, K⁺, Cl⁻, HCO₃⁻ ให้ครบเพื่อประเมิน</span>");
+                html += stepBlock(5, "Delta Ratio", "<span class='text-slate-400'>ข้ามการประเมิน (ข้อมูลไม่ครบ)</span>");
             }
 
             // STEP 6
-            const BUN = parseFloat(document.getElementById('abg_bun').value);
-            const Glu = parseFloat(document.getElementById('abg_glu').value);
-            const measOsm = parseFloat(document.getElementById('abg_osm').value);
-
             if (!isNaN(Na) && !isNaN(K) && !isNaN(BUN) && !isNaN(Glu)) {
                 let calcOsm = 2 * (Na + K) + (BUN / 2.8) + (Glu / 18);
                 let step6_res = `<div class="text-[10px] text-slate-500 font-medium block mb-1">Formula: 2(Na⁺+K⁺) + BUN/2.8 + Glu/18</div>`;
@@ -2641,37 +2936,94 @@
                 } else step6_res += `<span class='text-[10px] text-slate-500'>กรอก Measured Osmolality เพื่อประเมิน Osmolar Gap</span>`;
                 html += stepBlock(6, "Osmolality & Osmolar Gap", step6_res);
             } else {
-                html += stepBlock(6, "Osmolality", "<span class='text-slate-400'>กรุณากรอก Na, K, BUN, Glucose เพื่อประเมิน</span>");
+                html += stepBlock(6, "Osmolality", "<span class='text-slate-400'>กรุณากรอก Na⁺, K⁺, BUN, Glucose ให้ครบเพื่อประเมิน</span>");
             }
 
             // STEP 7: Correction & Treatment
             let step7_res = "";
-            if (isNaN(w) || w <= 0) {
-                step7_res = `<span class='text-slate-400'>กรุณากรอก <b>"น้ำหนัก (kg)"</b> ด้านบนสุดของเครื่องคิดเลข เพื่อให้ระบบคำนวณปริมาณยารักษา (Correction Dose) ให้ครับ</span>`;
-            } else {
-                let txHtml = "";
+            let doseHtml = "";
+            let txHtml = "";
+
+            if (!isNaN(w) && w > 0) {
                 
+                // 0. Glucose Management
+                if (!isNaN(Glu)) {
+                    if (Glu < 60) {
+                        doseHtml += `<div class="bg-white p-2.5 rounded border border-slate-200 mb-2 shadow-sm">
+                            <div class="text-[11px] font-bold text-amber-600 border-b border-slate-100 pb-1 mb-1 flex items-center gap-1">
+                                <svg class="shrink-0" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                                Hypoglycemia Management
+                            </div>
+                            <div class="text-[10px] text-slate-500 font-semibold mb-1 border-b border-slate-50 pb-1">มีภาวะน้ำตาลในเลือดต่ำ (Glucose = ${Glu.toFixed(0)}) <span class="text-emerald-600 font-medium ml-1">(Normal: 70-120 mg/dL)</span></div>
+                            
+                            <div class="mt-1 text-[10px] text-slate-600 space-y-1.5 pt-1.5">
+                                <div class="font-bold text-rose-700">1. Intravenous (IV) - สำหรับเคสฉุกเฉิน/มีอาการชัก</div>
+                                <div class="pl-2 leading-tight">👉 <span class="font-semibold">50% Dextrose:</span> <b class="text-slate-800">${(w * 0.5).toFixed(1)} - ${(w * 1.0).toFixed(1)} mL</b> <span class="text-[9px] text-slate-400">(0.5-1 mL/kg)</span></div>
+                                <div class="pl-2 leading-tight text-rose-600 font-bold">⚠️ ต้องเจือจางก่อนฉีดเสมอ (Dilute 1:1 ถึง 1:4 ด้วย NSS)</div>
+                                <div class="pl-2 leading-tight">👉 <span class="font-medium">สมมติเจือจาง 1:1 จะได้ปริมาตรรวม:</span> <b class="text-slate-800">${(w * 1.0).toFixed(1)} - ${(w * 2.0).toFixed(1)} mL</b> (Slow IV)</div>
+                                <div class="pl-2 leading-tight mt-1">👉 <span class="font-semibold">Follow-up:</span> เติม Dextrose ลงในน้ำเกลือให้เป็น 2.5% หรือ 5% Dextrose CRI</div>
+
+                                <div class="font-bold text-blue-700 mt-2 border-t border-slate-100 pt-1.5">2. Buccal / Transmucosal - ระหว่างรอเปิดเส้น IV หรือเคสลูกสัตว์</div>
+                                <div class="pl-2 leading-tight">👉 <span class="font-semibold">น้ำเชื่อม (Karo syrup, น้ำผึ้ง) หรือ 50% Dextrose:</span> ป้ายหรือถูที่เหงือก (Gums) ประมาณ <b class="text-slate-800">${(w * 0.1).toFixed(1)} - ${(w * 0.2).toFixed(1)} mL</b> (หรือ 1-2 หยดสำหรับลูกสัตว์)</div>
+                                <div class="pl-2 leading-tight text-slate-500 font-medium">* ระวังอย่าให้คนไข้กลืนหรือสำลัก หากไม่มีสติสัมปชัญญะ</div>
+                            </div>
+
+                            <div class="bg-white border border-slate-200 p-2 rounded mt-2 text-[10px] text-slate-600 space-y-1.5">
+                                <div class="font-bold text-slate-700 border-b border-slate-100 pb-1 mb-1">Differential Diagnosis (สาเหตุที่พบบ่อย)</div>
+                                <div>👉 <b class="text-slate-800">Excess Insulin:</b> Insulinoma, การฉีดอินซูลินเกินโดส (Iatrogenic), Xylitol toxicity (สุนัข)</div>
+                                <div>👉 <b class="text-slate-800">Decreased Production/Stores:</b> Sepsis, Hepatic failure/Portosystemic shunt, Starvation (พบบ่อยในลูกสัตว์ Toy breed/Neonate)</div>
+                                <div>👉 <b class="text-slate-800">Increased Consumption:</b> Hunting dog hypoglycemia (ออกกำลังกายหนัก), Pregnancy toxemia</div>
+                                <div>👉 <b class="text-slate-800">Endocrine:</b> Hypoadrenocorticism (Addison's disease)</div>
+                                <div>👉 <b class="text-slate-800">Artifact:</b> ทิ้งเลือดไว้นานเกินไปโดยไม่ปั่นแยกซีรั่ม (เม็ดเลือดแดงใช้น้ำตาล)</div>
+                            </div>
+                        </div>`;
+                    } else if (Glu > 250) {
+                        doseHtml += `<div class="bg-white p-2.5 rounded border border-slate-200 mb-2 shadow-sm">
+                            <div class="text-[11px] font-bold text-rose-700 border-b border-slate-100 pb-1 mb-1 flex items-center gap-1">
+                                <svg class="shrink-0" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="m17 7-5-5-5 5"/><path d="m17 17-5 5-5-5"/></svg>
+                                Hyperglycemia Management
+                            </div>
+                            <div class="text-[10px] text-slate-500 font-semibold mb-1 border-b border-slate-50 pb-1">มีภาวะน้ำตาลในเลือดสูง (Glucose = ${Glu.toFixed(0)})</div>
+                            <div class="mt-1 text-[10px] text-slate-600 space-y-1.5 pt-1.5">
+                                <div class="font-bold">1. Fluid Therapy (First line)</div>
+                                <div class="pl-2">👉 แก้ภาวะแห้งน้ำด้วย <b class="text-slate-800">0.9% NaCl</b> (ช่วยเจือจางน้ำตาลและเพิ่ม GFR เพื่อขับ Glucose ทางปัสสาวะ)</div>
+                                <div class="font-bold mt-1">2. Insulin Therapy (หากเป็น DKA)</div>
+                                <div class="pl-2">👉 <b class="text-slate-800">Regular Insulin (RI)</b> ให้แบบ IV CRI หรือ IM (ต้องแก้ Hypovolemia และ K⁺ ต้อง > 3.5 ก่อนเริ่มให้เสมอ!)</div>
+                            </div>
+                            <div class="bg-white border border-slate-200 p-2 rounded mt-2 text-[10px] text-slate-600 space-y-1.5">
+                                <div class="font-bold text-slate-700 border-b border-slate-100 pb-1 mb-1">Differential Diagnosis</div>
+                                <div>👉 <b class="text-slate-800">Diabetes Mellitus (DM):</b> DKA, Uncomplicated DM</div>
+                                <div>👉 <b class="text-slate-800">Stress/Pain (พบบ่อยในแมว):</b> Transient hyperglycemia</div>
+                                <div>👉 <b class="text-slate-800">Endocrine:</b> Hyperadrenocorticism (Cushing's), Pheochromocytoma, Acromegaly</div>
+                                <div>👉 <b class="text-slate-800">Drugs:</b> Glucocorticoids, Xylazine, Ketamine</div>
+                            </div>
+                        </div>`;
+                    }
+                }
+
                 // 1. NaHCO3 Correction
-                let baseDeficit = ref.m_HCO3 - HCO3;
-                if (pH < 7.2 && HCO3 < 14 && baseDeficit > 10) {
-                    let dose = 0.3 * w * baseDeficit;
-                    let vol84 = dose; // 8.4% NaHCO3 = 1 mEq/mL
-                    
-                    txHtml += `<div class="bg-white p-2.5 rounded border border-slate-200 mb-2 shadow-sm">
-                        <div class="text-[11px] font-bold text-cozy-purple-dark border-b border-slate-100 pb-1 mb-1 flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Sodium Bicarbonate (NaHCO₃)</div>
-                        <div class="text-[10px] text-slate-500 font-semibold mb-1">Criteria met: pH < 7.2, HCO₃⁻ < 14 mEq/L, Base Deficit > 10</div>
-                        <div class="text-[10px] text-slate-500 font-medium mb-1 border-b border-slate-50 pb-1">Formula: Dose (mEq) = 0.3 × BW × Base Deficit (${baseDeficit.toFixed(1)})</div>
-                        Dose ที่ต้องการ = <b class="text-slate-800">${dose.toFixed(2)} mEq</b><br>
-                        ใช้ <b class="text-rose-600">NaHCO₃ 8.4% = ${vol84.toFixed(2)} mL</b> <span class="text-[10px] text-slate-500">(ความเข้มข้น 1 mEq/mL)</span><br>
-                        <div class="mt-1.5 pt-1.5 border-t border-slate-100 text-[10px] text-slate-600 space-y-1">
-                            <div>👉 <b>แบ่ง 1/4 ถึง 1/3 (${(vol84/4).toFixed(1)} - ${(vol84/3).toFixed(1)} mL):</b> Slow IV bolus ช้าๆ ใน 30-60 นาที</div>
-                            <div>👉 <b>ให้ 1/4 (${(vol84/4).toFixed(1)} mL):</b> ผสมในสารน้ำให้ทาง IV ภายใน 4-6 ชั่วโมง</div>
-                            <div class="text-rose-600 font-bold mt-1 bg-rose-50 border border-rose-100 p-1.5 rounded">⚠ จากนั้น Recheck pH และ HCO₃⁻ (พิจารณาหยุดให้เมื่อพ้นขีดอันตราย)</div>
-                            <div class="text-rose-600 font-semibold mt-1">คำเตือน: ห้ามผสมใน LRS (แคลเซียมจะตกตะกอน) และระวังการเกิด Paradoxical CSF Acidosis / Hypokalemia</div>
-                        </div>
-                    </div>`;
-                } else if (HCO3 < ref.HCO3[0] || pH < ref.m_pH) {
-                    txHtml += `<div class="bg-white p-2.5 rounded border border-emerald-200 mb-2 shadow-sm text-[10px] text-emerald-700 font-semibold">✓ ไม่จำเป็นต้องแก้ไขด้วย NaHCO₃<br><span class="text-emerald-600 font-normal">(Criteria ไม่ตรงเกณฑ์ฉุกเฉิน: pH < 7.2, HCO₃⁻ < 14, BD > 10)</span></div>`;
+                if (hasABG) {
+                    let baseDeficit = ref.m_HCO3 - HCO3;
+                    if (pH < 7.2 && HCO3 < 14 && baseDeficit > 10) {
+                        let dose = 0.3 * w * baseDeficit;
+                        let vol84 = dose; // 8.4% NaHCO3 = 1 mEq/mL
+                        
+                        doseHtml += `<div class="bg-white p-2.5 rounded border border-slate-200 mb-2 shadow-sm">
+                            <div class="text-[11px] font-bold text-cozy-purple-dark border-b border-slate-100 pb-1 mb-1 flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Sodium Bicarbonate (NaHCO₃)</div>
+                            <div class="text-[10px] text-slate-500 font-semibold mb-1">Criteria met: pH < 7.2, HCO₃⁻ < 14 mEq/L, Base Deficit > 10</div>
+                            <div class="text-[10px] text-slate-500 font-medium mb-1 border-b border-slate-50 pb-1">Formula: Dose (mEq) = 0.3 × BW × Base Deficit (${baseDeficit.toFixed(1)})</div>
+                            Dose ที่ต้องการ = <b class="text-slate-800">${dose.toFixed(2)} mEq</b><br>
+                            ใช้ <b class="text-rose-600">NaHCO₃ 8.4% = ${vol84.toFixed(2)} mL</b> <span class="text-[10px] text-slate-500">(ความเข้มข้น 1 mEq/mL)</span><br>
+                            <div class="mt-1.5 pt-1.5 border-t border-slate-100 text-[10px] text-slate-600 space-y-1">
+                                <div>👉 <b>แบ่ง 1/4 ถึง 1/3 (${(vol84/4).toFixed(1)} - ${(vol84/3).toFixed(1)} mL):</b> Slow IV bolus ช้าๆ ใน 30-60 นาที</div>
+                                <div>👉 <b>ให้ 1/4 (${(vol84/4).toFixed(1)} mL):</b> ผสมในสารน้ำให้ทาง IV ภายใน 4-6 ชั่วโมง</div>
+                                <div class="text-rose-600 font-bold mt-1 bg-rose-50 border border-rose-100 p-1.5 rounded">⚠ จากนั้น Recheck pH และ HCO₃⁻ (พิจารณาหยุดให้เมื่อพ้นขีดอันตราย)</div>
+                                <div class="text-rose-600 font-semibold mt-1">คำเตือน: ห้ามผสมใน LRS (แคลเซียมจะตกตะกอน) และระวังการเกิด Paradoxical CSF Acidosis / Hypokalemia</div>
+                            </div>
+                        </div>`;
+                    } else if (HCO3 < ref.HCO3[0] || pH < ref.m_pH) {
+                        doseHtml += `<div class="bg-white p-2.5 rounded border border-emerald-200 mb-2 shadow-sm text-[10px] text-emerald-700 font-semibold">✓ ไม่จำเป็นต้องแก้ไขด้วย NaHCO₃<br><span class="text-emerald-600 font-normal">(Criteria ไม่ตรงเกณฑ์ฉุกเฉิน: pH < 7.2, HCO₃⁻ < 14, BD > 10)</span></div>`;
+                    }
                 }
 
                 // 2. Potassium Correction
@@ -2689,18 +3041,48 @@
                         let maxFluidRate_ml_hr = maxRate_ml_kg_hr * w;
 
                         if (K <= 3.5) {
-                            txHtml += `<div class="bg-white p-2.5 rounded border border-slate-200 mb-2 shadow-sm">
+                            let outpatientHtml = "";
+                            if (K >= 3.0 && K <= 3.5) {
+                                let oralDoseMin = (w / 4.5) * 2;
+                                let oralDoseMax = (w / 4.5) * 2.2;
+                                outpatientHtml = `
+                                <div class="bg-indigo-50 border border-indigo-200 p-2 rounded mt-2 text-[10px] text-indigo-800 space-y-1">
+                                    <div class="font-bold flex items-center gap-1 text-[11px]">
+                                        <svg class="shrink-0" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                                        Outpatient: Mild Hypokalemia (K⁺ 3.0-3.5)
+                                    </div>
+                                    <div class="font-bold text-indigo-900">👉 Oral supplementation: Potassium gluconate</div>
+                                    <div class="pl-2">Dose: <b class="text-indigo-900 text-[11px]">${oralDoseMin.toFixed(1)} - ${oralDoseMax.toFixed(1)} mEq</b> PO with food, BID</div>
+                                    <div class="text-[9px] text-indigo-600 pl-2 leading-tight">*(Formula: 2-2.2 mEq/4.5 kg) adjusted dose based on potassium level</div>
+                                </div>`;
+                            }
+
+                            doseHtml += `<div class="bg-white p-2.5 rounded border border-slate-200 mb-2 shadow-sm">
                                 <div class="text-[11px] font-bold text-cozy-purple-dark border-b border-slate-100 pb-1 mb-1 flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Potassium (K⁺) Supplementation</div>
-                                <div class="text-[10px] text-slate-500 font-semibold mb-1 border-b border-slate-50 pb-1">มีภาวะ Hypokalemia (K⁺ = ${K.toFixed(2)})</div>
+                                <div class="text-[10px] text-slate-500 font-semibold mb-1 border-b border-slate-50 pb-1">มีภาวะ Hypokalemia (K⁺ = ${K.toFixed(2)}) <span class="text-emerald-600 font-medium ml-1">(Normal: 3.5 - 5.5)</span></div>
                                 ผสม KCl เติมลงในสารน้ำ (ถุง 1 L) = <b class="text-rose-600">${addK1L} mEq</b><br>
                                 <span class="text-[10px] text-slate-500">(หรือเติม ${addK1L/4} mEq ในถุง 250 mL)</span>
                                 <div class="mt-1.5 pt-1.5 border-t border-slate-100 text-[10px] text-slate-600 space-y-1">
                                     <div><b class="text-rose-600">⚠ Maximal Fluid Infusion Rate:</b> <b class="text-slate-800">${maxRate_ml_kg_hr} mL/kg/hr</b> <span class="text-rose-600 font-bold ml-1">(*not exceed 0.5 mEq/kg/hr)</span></div>
                                     <div class="bg-rose-50 border border-rose-100 p-1.5 rounded text-rose-700 font-semibold mt-1">👉 สำหรับสัตว์ตัวนี้ (${w} kg) <u class="font-black">ห้ามปล่อยเรทเกิน ${maxFluidRate_ml_hr.toFixed(0)} mL/hr</u> เด็ดขาด!</div>
                                 </div>
+                                
+                                ${outpatientHtml}
+
+                                <div class="bg-amber-50 border border-amber-200 p-2 rounded mt-2 text-[10px] text-amber-800 space-y-1">
+                                    <div><b>Note:</b> Do NOT co-administer with glucose-containing fluids (drives K⁺ into cells).</div>
+                                    <div><b>Note:</b> Recheck electrolytes every 4–6 hours during active supplementation.</div>
+                                </div>
+
+                                <div class="bg-white border border-slate-200 p-2 rounded mt-2 text-[10px] text-slate-600 space-y-1.5">
+                                    <div class="font-bold text-slate-700 border-b border-slate-100 pb-1 mb-1">Differential Diagnosis</div>
+                                    <div>👉 <b class="text-slate-800">Transcellular shift (เข้าเซลล์):</b> Alkalemia, Insulin or Glucose therapy</div>
+                                    <div>👉 <b class="text-slate-800">Increased loss:</b> GI loss (Vomiting, Diarrhea), Renal loss (CKD, Diuretics, Post-obstructive diuresis, Hyperaldosteronism)</div>
+                                    <div>👉 <b class="text-slate-800">Decreased intake:</b> Anorexia, Prolonged K⁺-free fluids (e.g., 0.9% NaCl without K⁺)</div>
+                                </div>
                             </div>`;
                         } else {
-                            txHtml += `<div class="bg-white p-2.5 rounded border border-emerald-100 mb-2 shadow-sm">
+                            doseHtml += `<div class="bg-white p-2.5 rounded border border-emerald-100 mb-2 shadow-sm">
                                 <div class="text-[11px] font-bold text-cozy-purple-dark border-b border-emerald-50 pb-1 mb-1 flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> Potassium (K⁺) Maintenance</div>
                                 <div class="text-[10px] text-slate-500 font-semibold mb-1 border-b border-slate-50 pb-1">K⁺ อยู่ในเกณฑ์ปกติ (K⁺ = ${K.toFixed(2)}) อาจพิจารณาให้ Maintenance</div>
                                 ผสม KCl เติมลงในสารน้ำ (ถุง 1 L) = <b class="text-emerald-600">${addK1L} mEq</b><br>
@@ -2712,33 +3094,613 @@
                             </div>`;
                         }
                     } else if (K > 5.5) {
-                        txHtml += `<div class="bg-white p-2.5 rounded border border-slate-200 mb-2 shadow-sm">
+                        doseHtml += `<div class="bg-white p-2.5 rounded border border-slate-200 mb-2 shadow-sm">
                             <div class="text-[11px] font-bold text-rose-700 border-b border-rose-100 pb-1 mb-1 flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Hyperkalemia Treatment</div>
-                            <div class="text-[10px] text-slate-500 font-semibold mb-1">ภาวะโพแทสเซียมสูงเกินไป (K⁺ = ${K.toFixed(2)}) เสี่ยงหัวใจวาย</div>
+                            <div class="text-[10px] text-slate-500 font-semibold mb-1">ภาวะโพแทสเซียมสูงเกินไป (K⁺ = ${K.toFixed(2)}) <span class="text-emerald-600 font-medium ml-1">(Normal: 3.5 - 5.5 mEq/L)</span></div>
                             <div class="mt-1 text-[10px] text-slate-600 space-y-1.5 border-t border-slate-100 pt-1.5">
-                                <div class="font-bold">1. 10% Calcium Gluconate <span class="font-normal text-slate-500">(ปกป้องกล้ามเนื้อหัวใจ)</span></div>
-                                <div class="pl-2">👉 <b class="text-slate-800">${(w * 0.5).toFixed(1)} - ${(w * 1.5).toFixed(1)} mL</b> (Slow IV 10-20 min) ฟังเสียงหัวใจด้วย</div>
-                                <div class="font-bold mt-1">2. Regular Insulin + Glucose <span class="font-normal text-slate-500">(ดึง K⁺ กลับเข้าเซลล์)</span></div>
-                                <div class="pl-2">👉 RI <b class="text-slate-800">${(w * 0.1).toFixed(1)} - ${(w * 0.2).toFixed(1)} Units</b> (IV) ตามด้วย <b class="text-slate-800">Glucose 50% ${(w * 0.4).toFixed(1)} - ${(w * 0.8).toFixed(1)} mL</b> (ต้องเจือจางก่อนฉีด)</div>
-                                <div class="font-bold mt-1">3. Fluid Therapy <span class="font-normal text-slate-500">(เร่งขับ K⁺ ทางฉี่)</span></div>
+                                <div class="font-bold">1. 10% Calcium gluconate <span class="font-normal text-slate-500">(0.5–1.5 mL/kg)</span></div>
+                                <div class="pl-2">👉 <b class="text-slate-800">${(w * 0.5).toFixed(1)} - ${(w * 1.5).toFixed(1)} mL</b> IV over 10–20 min (with ECG monitoring)</div>
+                                <div class="font-bold mt-1">2. Dextrose 50% <span class="font-normal text-slate-500">(1 mL/kg)</span></div>
+                                <div class="pl-2">👉 <b class="text-slate-800">${(w * 1.0).toFixed(1)} mL</b> IV (dilute 1:4 if given directly IV)</div>
+                                <div class="font-bold mt-1">3. Regular insulin <span class="font-normal text-slate-500">(0.5 U/kg)</span> + Dextrose 50% <span class="font-normal text-slate-500">(4 mL/kg)</span></div>
+                                <div class="pl-2">👉 RI <b class="text-slate-800">${(w * 0.5).toFixed(1)} Units</b> IV plus Dextrose 50% <b class="text-slate-800">${(w * 4.0).toFixed(1)} mL</b> IV</div>
+                                <div class="font-bold mt-1">4. Sodium bicarbonate <span class="font-normal text-slate-500">(1–2 mEq/kg)</span></div>
+                                <div class="pl-2">👉 <b class="text-slate-800">${(w * 1.0).toFixed(1)} - ${(w * 2.0).toFixed(1)} mEq</b> IV over 15 minutes (dilute 1:4 if given directly IV)</div>
+                                <div class="font-bold mt-1">5. Furosemide <span class="font-normal text-slate-500">(1–2 mg/kg)</span></div>
+                                <div class="pl-2">👉 <b class="text-slate-800">${(w * 1.0).toFixed(1)} - ${(w * 2.0).toFixed(1)} mg</b> IV (if AKI)</div>
+                                <div class="font-bold mt-1">6. Fluid Therapy <span class="font-normal text-slate-500">(เร่งขับ K⁺ ทางฉี่)</span></div>
                                 <div class="pl-2">👉 0.9% NaCl</div>
+                            </div>
+                            
+                            <div class="bg-amber-50 border border-amber-200 p-2 rounded mt-2 text-[10px] text-amber-800 space-y-1">
+                                <div class="font-bold flex items-center gap-1">
+                                    <svg class="shrink-0" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+                                    Note: ECG Changes
+                                </div>
+                                <div>Peaked T-waves (earliest) → absent P-waves → wide QRS → sine wave → asystole</div>
+                            </div>
+
+                            <div class="bg-white border border-slate-200 p-2 rounded mt-2 text-[10px] text-slate-600 space-y-1.5">
+                                <div class="font-bold text-slate-700 border-b border-slate-100 pb-1 mb-1">Differential Diagnosis</div>
+                                <div>👉 <b class="text-slate-800">Pseudohyperkalemia:</b> Hemolysis (especially in Akitas/Shibas), EDTA contamination</div>
+                                <div>👉 <b class="text-slate-800">Decreased Excretion:</b> Urethral obstruction, Uroabdomen, AKI (oliguric/anuric), Hypoadrenocorticism (Addison's)</div>
+                                <div>👉 <b class="text-slate-800">Transcellular Shift:</b> Severe tissue damage/necrosis, Severe acidemia, Insulin deficiency</div>
+                                <div>👉 <b class="text-slate-800">Increased Intake:</b> Iatrogenic (excessive IV fluids supplementation)</div>
                             </div>
                         </div>`;
                     }
                 }
 
-                if (txHtml === "") {
-                    step7_res = `<span class='text-emerald-600 font-bold'>✓ ไม่พบความผิดปกติรุนแรงที่ต้องคำนวณ Dose เพื่อแก้ไข (ค่า HCO₃⁻ และ K⁺ ปลอดภัย)</span>`;
-                } else {
-                    step7_res = txHtml;
+                // 3. Calcium Correction
+                if (!isNaN(iCa)) {
+                    if (iCa < 1.1) {
+                        doseHtml += `<div class="bg-white p-2.5 rounded border border-slate-200 mb-2 shadow-sm">
+                            <div class="text-[11px] font-bold text-cozy-purple-dark border-b border-slate-100 pb-1 mb-1 flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Calcium (iCa²⁺) Supplementation</div>
+                            <div class="text-[10px] text-slate-500 font-semibold mb-1 border-b border-slate-50 pb-1">มีภาวะ Hypocalcemia (iCa²⁺ = ${iCa.toFixed(2)}) <span class="text-emerald-600 font-medium ml-1">(Normal: 1.1 - 1.4 mmol/L)</span></div>
+                            <div class="mt-1 text-[10px] text-slate-600 space-y-1.5 pt-1.5">
+                                <div class="font-bold">10% Calcium gluconate <span class="font-normal text-slate-500">(0.5–1.5 mL/kg)</span></div>
+                                <div class="pl-2">👉 <b class="text-slate-800">${(w * 0.5).toFixed(1)} - ${(w * 1.5).toFixed(1)} mL</b> IV ช้าๆ (over 10-20 min) พร้อมติดตาม ECG</div>
+                            </div>
+                            <div class="bg-amber-50 border border-amber-200 p-2 rounded mt-2 text-[10px] text-amber-800 space-y-1">
+                                <div class="font-bold flex items-center gap-1">Note: ECG Changes & Warnings</div>
+                                <div>👉 หยุดให้ทันทีหากพบ: Bradycardia, VPCs, หรือ Q-T interval สั้นลง</div>
+                                <div>👉 ห้ามผสมหรือให้ร่วมสายเดียวกับสารน้ำที่มี Bicarbonate หรือ Phosphorus (จะตกตะกอน)</div>
+                            </div>
+                            <div class="bg-white border border-slate-200 p-2 rounded mt-2 text-[10px] text-slate-600 space-y-1.5">
+                                <div class="font-bold text-slate-700 border-b border-slate-100 pb-1 mb-1">Differential Diagnosis</div>
+                                <div>👉 <b class="text-slate-800">Hypoparathyroidism:</b> Primary, Iatrogenic (post-thyroidectomy)</div>
+                                <div>👉 <b class="text-slate-800">Eclampsia:</b> Puerperal tetany (สุนัข/แมวให้นมลูก)</div>
+                                <div>👉 <b class="text-slate-800">Renal/Pancreatic:</b> Acute kidney injury (AKI), Acute pancreatitis</div>
+                                <div>👉 <b class="text-slate-800">Toxins/Drugs:</b> Phosphate enema, Ethylene glycol toxicity</div>
+                                <div>👉 <b class="text-slate-800">Others:</b> Hypomagnesemia, Sepsis, EDTA contamination (Spurious)</div>
+                            </div>
+                        </div>`;
+                    } else if (iCa > 1.4) {
+                        doseHtml += `<div class="bg-white p-2.5 rounded border border-slate-200 mb-2 shadow-sm">
+                            <div class="text-[11px] font-bold text-rose-700 border-b border-rose-100 pb-1 mb-1 flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Hypercalcemia Treatment</div>
+                            <div class="text-[10px] text-slate-500 font-semibold mb-1 border-b border-slate-50 pb-1">มีภาวะแคลเซียมในเลือดสูง (iCa²⁺ = ${iCa.toFixed(2)}) <span class="text-emerald-600 font-medium ml-1">(Normal: 1.1 - 1.4 mmol/L)</span></div>
+                            <div class="mt-1 text-[10px] text-slate-600 space-y-1.5 border-t border-slate-100 pt-1.5">
+                                <div class="font-bold">1. Fluid Therapy <span class="font-normal text-slate-500">(0.9% NaCl)</span></div>
+                                <div class="pl-2">👉 ให้สารน้ำ 0.9% NaCl (NSS) เพื่อช่วยขับ Calcium ออกทางปัสสาวะ (Calciuresis)</div>
+                                <div class="font-bold mt-1">2. Furosemide <span class="font-normal text-slate-500">(1–2 mg/kg)</span></div>
+                                <div class="pl-2">👉 <b class="text-slate-800">${(w * 1.0).toFixed(1)} - ${(w * 2.0).toFixed(1)} mg</b> IV/SC (ให้<u class="font-bold text-rose-600">หลังจาก</u>แก้ไขภาวะ Dehydration ด้วยน้ำเกลือแล้วเท่านั้น ห้ามใช้ Thiazide)</div>
+                                <div class="font-bold mt-1">3. Glucocorticoids <span class="font-normal text-slate-500">(มีประสิทธิภาพในเคส Lymphoma, Multiple myeloma, Granulomatous disease)</span></div>
+                                <div class="pl-2 space-y-1 mt-1">
+                                    <div>👉 <b class="text-slate-800">Prednisolone:</b> <b class="text-rose-600">${(w * 1.0).toFixed(1)} - ${(w * 2.0).toFixed(1)} mg/day</b> <span class="text-[9px] text-slate-500">(1-2 mg/kg/day PO, SC, IV)</span></div>
+                                    <div>👉 <b class="text-slate-800">Dexamethasone:</b> <b class="text-rose-600">${(w * 0.1).toFixed(2)} - ${(w * 0.22).toFixed(2)} mg</b> <span class="text-[9px] text-slate-500">(0.1-0.22 mg/kg q12h IV, SC)</span></div>
+                                    <div class="text-rose-600 font-semibold bg-rose-50 p-1.5 rounded border border-rose-100 mt-1">⚠ Warning: ห้ามให้ถ้ายังวินิจฉัยโรคไม่แน่ชัด เพราะจะทำให้เซลล์มะเร็งยุบและตรวจหา Lymphoma ไม่เจอ</div>
+                                </div>
+                                <div class="font-bold mt-1">4. Bisphosphonates <span class="font-normal text-slate-500">(Inhibits osteoclast activity)</span></div>
+                                <div class="pl-2 space-y-1.5 mt-1">
+                                    <div class="bg-slate-50 p-1.5 rounded border border-slate-100">
+                                        <b class="text-slate-800">Pamidronate:</b> <span class="text-slate-700 font-bold">1.3-2 mg/kg IV</span><br>
+                                        👉 Dose: <b class="text-slate-800">${(w * 1.3).toFixed(1)} - ${(w * 2.0).toFixed(1)} mg</b><br>
+                                        <span class="text-[9px] text-slate-500 leading-tight block">Dilute in 150 mL of 0.9% saline and infuse over 2 hours. Can repeat in 1 to 3 weeks.</span>
+                                    </div>
+                                    <div class="bg-slate-50 p-1.5 rounded border border-slate-100">
+                                        <b class="text-slate-800">Zoledronate:</b> <span class="text-slate-700 font-bold">0.1-0.25 mg/kg IV</span><br>
+                                        👉 Dose: <b class="text-slate-800">${(w * 0.1).toFixed(2)} - ${(w * 0.25).toFixed(2)} mg</b><br>
+                                        <span class="text-[9px] text-slate-500 leading-tight block">Dilute in 45-100 mL of 0.9% saline and infuse over 30 minutes. Can repeat in 3 to 4 weeks.</span>
+                                    </div>
+                                    <div class="bg-slate-50 p-1.5 rounded border border-slate-100">
+                                        <b class="text-slate-800">Alendronate:</b><br>
+                                        <span class="text-[10px] text-slate-700 font-bold">Dogs:</span> <span class="text-slate-600">0.5-1 mg/kg PO q24h</span> 👉 Dose: <b class="text-slate-800">${(w * 0.5).toFixed(1)} - ${(w * 1.0).toFixed(1)} mg</b><br>
+                                        <span class="text-[10px] text-slate-700 font-bold">Cats:</span> <span class="text-slate-600">5-10 mg/cat PO once per week</span>
+                                    </div>
+                                </div>
+                                <div class="font-bold mt-1">5. Alternative treatment <span class="font-normal text-slate-500">(Last resort)</span></div>
+                                <div class="pl-2 space-y-1.5 mt-1">
+                                    <div class="bg-slate-50 p-1.5 rounded border border-slate-100">
+                                        <b class="text-slate-800">Sodium EDTA:</b> <span class="text-slate-700 font-bold">25-75 mg/kg/h IV</span><br>
+                                        👉 Dose: <b class="text-rose-600">${(w * 25).toFixed(0)} - ${(w * 75).toFixed(0)} mg/hr</b><br>
+                                        <span class="text-[9px] text-rose-600 font-medium leading-tight block">Caution: Nephrotoxic. Carefully monitor during infusion.</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bg-white border border-slate-200 p-2 rounded mt-2 text-[10px] text-slate-600 space-y-1.5">
+                                <div class="font-bold text-slate-700 border-b border-slate-100 pb-1 mb-1">Differential Diagnosis (HARDIONS)</div>
+                                <div>👉 <b class="text-slate-800">H:</b> Hyperparathyroidism (Primary)</div>
+                                <div>👉 <b class="text-slate-800">A:</b> Addison's disease</div>
+                                <div>👉 <b class="text-slate-800">R:</b> Renal disease</div>
+                                <div>👉 <b class="text-slate-800">D:</b> Vitamin D toxicity (Cholecalciferol rodenticide, Calcipotriol)</div>
+                                <div>👉 <b class="text-slate-800">I:</b> Idiopathic (โดยเฉพาะในแมว)</div>
+                                <div>👉 <b class="text-slate-800">O:</b> Osteolytic (Osteomyelitis, Bone tumors)</div>
+                                <div>👉 <b class="text-slate-800">N:</b> Neoplasia (Lymphoma, AGASACA, Multiple myeloma)</div>
+                                <div>👉 <b class="text-slate-800">S:</b> Spurious / Systemic granulomatous disease</div>
+                            </div>
+                        </div>`;
+                    }
+                }
+
+                // 4. Magnesium Correction
+                if (!isNaN(Mg)) {
+                    if (Mg < 0.4) {
+                        doseHtml += `<div class="bg-white p-2.5 rounded border border-slate-200 mb-2 shadow-sm">
+                            <div class="text-[11px] font-bold text-cozy-purple-dark border-b border-slate-100 pb-1 mb-1 flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Magnesium (Mg²⁺) Supplementation</div>
+                            <div class="text-[10px] text-slate-500 font-semibold mb-1 border-b border-slate-50 pb-1">มีภาวะ Hypomagnesemia (Mg²⁺ = ${Mg.toFixed(2)}) <span class="text-emerald-600 font-medium ml-1">(Normal: 0.4 - 0.6 mmol/L)</span></div>
+                            <div class="mt-1 text-[10px] text-slate-600 space-y-1.5 pt-1.5">
+                                <div class="font-bold">Magnesium Sulfate (MgSO₄) <span class="font-normal text-slate-500">(0.5-1.0 mEq/kg/day)</span></div>
+                                <div class="pl-2 leading-tight">👉 Dose: <b class="text-slate-800">${(w * 0.5).toFixed(1)} - ${(w * 1.0).toFixed(1)} mEq/day</b> IV CRI</div>
+                            </div>
+                            <div class="bg-amber-50 border border-amber-200 p-2 rounded mt-2 text-[10px] text-amber-800 space-y-1">
+                                <div><b>Note:</b> ควรให้แบบผสมสารน้ำหยดเข้าเส้นเลือดอย่างช้าๆ (CRI) ตลอด 24 ชม.</div>
+                                <div><b>Note:</b> <u class="text-rose-600 font-bold">ห้ามผสม</u> ในสารน้ำที่มีแคลเซียม (LRS, Plasmalyte) เพราะจะเกิดตะกอน</div>
+                                <div><b>Note:</b> Hypokalemia and hypocalcemia that fail to correct with supplementation should prompt measurement of ionized magnesium — Mg²⁺ deficiency prevents their correction.</div>
+                            </div>
+                            <div class="bg-white border border-slate-200 p-2 rounded mt-2 text-[10px] text-slate-600 space-y-1.5">
+                                <div class="font-bold text-slate-700 border-b border-slate-100 pb-1 mb-1">Differential Diagnosis</div>
+                                <div>👉 <b class="text-slate-800">Decreased intake:</b> Anorexia, Prolonged IV fluids without Mg supplementation</div>
+                                <div>👉 <b class="text-slate-800">GI loss:</b> Vomiting, Diarrhea, Malabsorption</div>
+                                <div>👉 <b class="text-slate-800">Renal loss:</b> Diuretic therapy, DKA, Hyperaldosteronism, Aminoglycosides</div>
+                                <div>👉 <b class="text-slate-800">Transcellular shift:</b> Refeeding syndrome, Insulin therapy</div>
+                            </div>
+                        </div>`;
+                    } else if (Mg > 0.6) {
+                        doseHtml += `<div class="bg-white p-2.5 rounded border border-slate-200 mb-2 shadow-sm">
+                            <div class="text-[11px] font-bold text-rose-700 border-b border-rose-100 pb-1 mb-1 flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Hypermagnesemia Treatment</div>
+                            <div class="text-[10px] text-slate-500 font-semibold mb-1 border-b border-slate-50 pb-1">มีภาวะแมกนีเซียมในเลือดสูง (Mg²⁺ = ${Mg.toFixed(2)}) <span class="text-emerald-600 font-medium ml-1">(Normal: 0.4 - 0.6 mmol/L)</span></div>
+                            <div class="mt-1 text-[10px] text-slate-600 space-y-1.5 pt-1.5">
+                                <div class="font-bold">1. Discontinue Mg-containing fluids/drugs</div>
+                                <div class="font-bold mt-1">2. Fluid Therapy <span class="font-normal text-slate-500">(0.9% NaCl)</span></div>
+                                <div class="pl-2">👉 ให้เพื่อกระตุ้นการขับ Mg ออกทางปัสสาวะ (Diuresis)</div>
+                                <div class="font-bold mt-1">3. Furosemide <span class="font-normal text-slate-500">(1–2 mg/kg)</span></div>
+                                <div class="pl-2">👉 <b class="text-slate-800">${(w * 1.0).toFixed(1)} - ${(w * 2.0).toFixed(1)} mg</b> IV/SC (เมื่อคนไข้หายจากภาวะ Dehydrate แล้ว)</div>
+                                <div class="font-bold mt-1">4. Calcium gluconate 10% <span class="font-normal text-slate-500">(สำหรับรายที่รุนแรง/มีอาการทางหัวใจ)</span></div>
+                                <div class="pl-2">👉 <b class="text-slate-800">${(w * 0.5).toFixed(1)} - ${(w * 1.5).toFixed(1)} mL</b> IV over 10–20 min เพื่อต้านฤทธิ์ของ Mg ต่อกล้ามเนื้อหัวใจ</div>
+                            </div>
+                            <div class="bg-white border border-slate-200 p-2 rounded mt-2 text-[10px] text-slate-600 space-y-1.5">
+                                <div class="font-bold text-slate-700 border-b border-slate-100 pb-1 mb-1">Differential Diagnosis</div>
+                                <div>👉 <b class="text-slate-800">Decreased excretion:</b> Acute kidney injury (AKI), Urethral obstruction, Ruptured bladder</div>
+                                <div>👉 <b class="text-slate-800">Increased intake:</b> Magnesium-containing laxatives/cathartics, Iatrogenic overdose</div>
+                                <div>👉 <b class="text-slate-800">Endocrine:</b> Hypoadrenocorticism (Addison's disease)</div>
+                            </div>
+                        </div>`;
+                    }
+                }
+
+                // 5. Phosphorus Evaluation & Treatment
+                if (!isNaN(Phos)) {
+                    if (Phos < 2.5) {
+                        doseHtml += `<div class="bg-white p-2.5 rounded border border-slate-200 mb-2 shadow-sm">
+                            <div class="text-[11px] font-bold text-cozy-purple-dark border-b border-slate-100 pb-1 mb-1 flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Phosphorus (P) Supplementation</div>
+                            <div class="text-[10px] text-slate-500 font-semibold mb-1 border-b border-slate-50 pb-1">มีภาวะ Hypophosphatemia (Phos = ${Phos.toFixed(2)}) <span class="text-emerald-600 font-medium ml-1">(Normal: 2.5 - 4.5 mg/dL)</span></div>
+                            <div class="mt-1 text-[10px] text-slate-600 space-y-1.5 pt-1.5">
+                                <div class="font-bold text-rose-700">กรณีรุนแรง (Severe &lt; 1.5 mg/dL หรือมีอาการ Hemolysis, Weakness)</div>
+                                <div class="pl-2 leading-tight">👉 ให้ <b class="text-slate-800">Potassium Phosphate (KPO₄)</b> หรือ <b class="text-slate-800">Sodium Phosphate</b> ทาง IV CRI</div>
+                                <div class="pl-2 leading-tight">👉 Dose: <b class="text-slate-800">${(w * 0.01).toFixed(3)} - ${(w * 0.03).toFixed(3)} mmol/hr</b> <span class="text-[9px] text-slate-500">(0.01-0.03 mmol/kg/hr)</span></div>
+                            </div>
+                            
+                            <div class="bg-amber-50 border border-amber-200 p-2 rounded mt-2 text-[10px] text-amber-800 space-y-1">
+                                <div><b>Note:</b> <u class="text-rose-600 font-bold">ห้ามผสม</u> ในสารน้ำที่มีแคลเซียม (LRS, Plasmalyte, Acetar) เพราะจะเกิดตะกอน Calcium Phosphate (แนะนำผสมใน 0.9% NaCl)</div>
+                                <div><b>Note:</b> ติดตามระดับ K⁺ และ Ca²⁺ อย่างใกล้ชิด (การให้ P เร็วไปอาจทำให้เกิด Hypocalcemia)</div>
+                            </div>
+
+                            <div class="bg-white border border-slate-200 p-2 rounded mt-2 text-[10px] text-slate-600 space-y-1.5">
+                                <div class="font-bold text-slate-700 border-b border-slate-100 pb-1 mb-1">Differential Diagnosis</div>
+                                <div>👉 <b class="text-slate-800">Transcellular shift (พบบ่อยสุด):</b> Insulin therapy (เช่นในเคส DKA), Refeeding syndrome, Respiratory alkalosis</div>
+                                <div>👉 <b class="text-slate-800">Decreased absorption:</b> Starvation, Malabsorption, การกินยา Phosphate binders มากเกินไป, Vitamin D deficiency</div>
+                                <div>👉 <b class="text-slate-800">Increased loss (Renal):</b> Primary hyperparathyroidism, Diuresis, Fanconi syndrome</div>
+                            </div>
+                        </div>`;
+                    } else if (Phos > 4.5) {
+                        doseHtml += `<div class="bg-white p-2.5 rounded border border-slate-200 mb-2 shadow-sm">
+                            <div class="text-[11px] font-bold text-rose-700 border-b border-rose-100 pb-1 mb-1 flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Hyperphosphatemia Treatment</div>
+                            <div class="text-[10px] text-slate-500 font-semibold mb-1 border-b border-slate-50 pb-1">มีภาวะฟอสฟอรัสในเลือดสูง (Phos = ${Phos.toFixed(2)}) <span class="text-emerald-600 font-medium ml-1">(Normal: 2.5 - 4.5 mg/dL)</span></div>
+                            <div class="mt-1 text-[10px] text-slate-600 space-y-1.5 pt-1.5">
+                                <div class="font-bold">1. Fluid Therapy <span class="font-normal text-slate-500">(0.9% NaCl)</span></div>
+                                <div class="pl-2">👉 เร่งการขับ P ออกทางปัสสาวะ (หากไตยังทำงานปกติ)</div>
+                                <div class="font-bold mt-1">2. Phosphate Binders <span class="font-normal text-slate-500">(ผสมพร้อมอาหาร)</span></div>
+                                <div class="pl-2 space-y-1 mt-1">
+                                    <div class="bg-slate-50 p-1.5 rounded border border-slate-100">
+                                        <b class="text-slate-800">Aluminum hydroxide:</b> <span class="text-slate-700 font-bold">30-90 mg/kg/day</span><br>
+                                        👉 Dose: <b class="text-slate-800">${(w * 30).toFixed(0)} - ${(w * 90).toFixed(0)} mg/day</b> (แบ่งให้ตามมื้ออาหาร)
+                                    </div>
+                                    <div class="bg-slate-50 p-1.5 rounded border border-slate-100 mt-1">
+                                        <b class="text-slate-800">Sevelamer HCl:</b> <span class="text-slate-700 font-bold">30-135 mg/kg/day</span><br>
+                                        👉 Dose: <b class="text-slate-800">${(w * 30).toFixed(0)} - ${(w * 135).toFixed(0)} mg/day</b> (แบ่งให้ตามมื้ออาหาร)
+                                    </div>
+                                </div>
+                                <div class="font-bold mt-1">3. Diet Modification</div>
+                                <div class="pl-2">👉 ควบคุมปริมาณ P ในอาหาร (Renal diets)</div>
+                            </div>
+
+                            <div class="bg-amber-50 border border-amber-200 p-2 rounded mt-2 text-[10px] text-amber-800 space-y-1">
+                                <div><b>Note:</b> ระวังภาวะ <b class="text-rose-600">Soft tissue mineralization</b> (เนื้อเยื่อกลายเป็นหินปูน) หากค่า [Ca] × [P] > 70 (mg/dL)²</div>
+                            </div>
+
+                            <div class="bg-white border border-slate-200 p-2 rounded mt-2 text-[10px] text-slate-600 space-y-1.5">
+                                <div class="font-bold text-slate-700 border-b border-slate-100 pb-1 mb-1">Differential Diagnosis</div>
+                                <div>👉 <b class="text-slate-800">Decreased excretion:</b> AKI, CKD, Urethral obstruction, Ruptured bladder (Uroabdomen)</div>
+                                <div>👉 <b class="text-slate-800">Increased intake:</b> Phosphate enema toxicity (พบบ่อยในแมว), Vitamin D toxicity (ยาเบื่อหนู, วิตามินเสริม)</div>
+                                <div>👉 <b class="text-slate-800">Transcellular shift:</b> Tumor lysis syndrome, Massive tissue trauma, Rhabdomyolysis</div>
+                                <div>👉 <b class="text-slate-800">Endocrine/Other:</b> Hypoparathyroidism, Hyperthyroidism (cats), <span class="text-indigo-600 font-semibold">พบเป็นปกติในสัตว์อายุน้อยกำลังเจริญเติบโต (Young animals)</span></div>
+                            </div>
+                        </div>`;
+                    }
+                }
+
+                // 6. Sodium Evaluation & Treatment
+                if (!isNaN(Na)) {
+                    let naMin = sp === 'dog' ? 139 : 145;
+                    let naMax = sp === 'dog' ? 154 : 158;
+                    let naMean = sp === 'dog' ? 146.5 : 151.5;
+
+                    if (Na > naMax) {
+                        let fwd_ml = 0;
+                        let time_h = 0;
+                        let rate_ml_h = 0;
+                        let fluidNaK = 0;
+                        let tbw = 0;
+                        let td_hr = onset === 'acute' ? 1.0 : 0.5;
+                        let td_12h = td_hr * 12;
+                        let vol_12h = 0;
+
+                        if (!isNaN(w) && w > 0) {
+                            tbw = w * 0.6;
+                            // Free Water Deficit (L) = BW * 0.6 * ((Patient Na / Normal Na) - 1)
+                            let fwd_L = tbw * ((Na / naMean) - 1);
+                            fwd_ml = fwd_L * 1000; // in mL
+                            
+                            // Replacement time
+                            time_h = onset === 'acute' ? (Na - naMean) : (Na - naMean) * 2;
+                            if (time_h <= 0) time_h = 1; // Prevent div by 0
+                            
+                            // Rate
+                            rate_ml_h = fwd_ml / time_h;
+                            
+                            // Volume in 12h
+                            vol_12h = (rate_ml_h * 12) / 1000; // in L
+                            
+                            // Target Fluid [Na+K]
+                            fluidNaK = Na - (td_12h * (tbw + vol_12h));
+                        }
+
+                        txHtml += `<div class="bg-white p-2.5 rounded border border-slate-200 mb-2 shadow-sm">
+                            <div class="text-[11px] font-bold text-rose-700 border-b border-slate-100 pb-1 mb-1 flex items-center gap-1">
+                                <svg class="shrink-0" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                                Hypernatremia Treatment
+                            </div>
+                            <div class="text-[10px] text-slate-500 font-semibold mb-1 border-b border-slate-50 pb-1">
+                                มีภาวะโซเดียมในเลือดสูง (Na⁺ = ${Na.toFixed(1)}) <span class="text-emerald-600 font-medium ml-1">(Normal: ${naMin}-${naMax} mEq/L)</span>
+                            </div>
+                            <div class="mt-1 text-[10px] text-slate-600 space-y-1.5 pt-1.5">
+                                ${(!isNaN(w) && w > 0) ? `
+                                <div class="font-bold text-slate-700">Free Water Deficit (FWD): <span class="text-slate-800">${fwd_ml.toFixed(0)} mL</span></div>
+                                <div class="text-[9px] text-slate-400 font-medium leading-tight mb-1">*Formula: FWD (L) = BW × 0.6 × ((Patient Na / Normal Na) - 1)</div>
+                                <div class="pl-2 leading-tight space-y-1 mb-1">
+                                    <div>👉 <span class="font-semibold">FWD Replacement Time:</span> ${time_h.toFixed(1)} h <span class="text-slate-400 font-medium">(${onset === 'acute' ? 'Acute: drop 1 mEq/L/h' : 'Chronic: drop 0.5 mEq/L/h'})</span></div>
+                                    <div>👉 <span class="font-semibold">FWD Rate:</span> <b class="text-rose-600">${rate_ml_h.toFixed(1)} mL/h</b></div>
+                                </div>
+                                
+                                <div class="font-bold text-blue-700 mt-2 border-t border-slate-100 pt-1.5">💧 Fluid Selection Guide (12h block):</div>
+                                <div class="pl-2 leading-tight space-y-1 mb-1">
+                                    <div>👉 <span class="font-semibold">Target Decrease (TD) in 12h:</span> ${td_12h.toFixed(1)} mEq <span class="text-slate-400 font-medium">(${td_hr.toFixed(1)} mEq/hr × 12h)</span></div>
+                                    <div>👉 <span class="font-semibold">Target Fluid [Na⁺+K⁺]:</span> <b class="text-blue-700">${fluidNaK.toFixed(1)} mEq/L</b></div>
+                                    <div class="text-[9px] text-slate-400 font-medium mt-0.5 mb-1">*Formula: Patient Na - [TD × (TBW + Volume of fluid(L))]</div>
+                                </div>
+                                ` : ''}
+                                
+                                <div class="bg-slate-50 border border-slate-200 p-2 rounded mt-2">
+                                    <div class="font-bold text-slate-700 mb-1">📌 Na⁺ content ในน้ำเกลือแต่ละชนิด:</div>
+                                    <ul class="list-disc pl-4 text-slate-600 space-y-0.5">
+                                        <li><b class="text-slate-700">D5W :</b> 0 mEq/L</li>
+                                        <li><b class="text-slate-700">0.45% NaCl :</b> 77 mEq/L</li>
+                                        <li><b class="text-slate-700">LRS, Acetar :</b> 130 mEq/L</li>
+                                        <li><b class="text-slate-700">0.9% NSS :</b> 154 mEq/L</li>
+                                    </ul>
+                                    <div class="mt-1 pt-1 border-t border-slate-200 text-rose-600 font-semibold">
+                                        ⚠️ หมายเหตุ: ใช้ NSS (0.9% NaCl) ได้ หากระดับ Na⁺ ≤ 164 mEq/L
+                                    </div>
+                                </div>
+                            </div>
+                        </div>`;
+                    }
+                    else if (Na < naMin) {
+                        let naDeficit = 0;
+                        let targetNa = naMin; // Target to reach lower end of normal
+                        let time_h = 0;
+                        let rate_ml_h = 0;
+                        let fluidNaK = 0;
+                        let tbw = 0;
+                        let ti_hr = 0.5; // Always raise at safe rate 0.5 mEq/L/hr
+                        let ti_12h = ti_hr * 12;
+                        let vol_12h = 0;
+                        let vol_L = 0;
+
+                        if (!isNaN(w) && w > 0) {
+                            tbw = w * 0.6;
+                            naDeficit = tbw * (targetNa - Na);
+                            
+                            // Time to replace deficit (always * 2 to raise 0.5 mEq/L/hr)
+                            time_h = (targetNa - Na) * 2;
+                            if (time_h <= 0) time_h = 1;
+                            
+                            // Assume replacement with 0.9% NaCl (154 mEq/L) to find volume for rate calculation
+                            vol_L = naDeficit / 154;
+                            rate_ml_h = (vol_L * 1000) / time_h;
+                            
+                            // Volume in 12h
+                            vol_12h = (rate_ml_h * 12) / 1000;
+                            
+                            // Target Fluid [Na+K]
+                            fluidNaK = Na + (ti_12h * (tbw + vol_12h));
+                        }
+                        
+                        let addisonNote = "";
+                        if (!isNaN(K) && K > 0) {
+                            let ratio = Na / K;
+                            if (ratio < 27) {
+                                addisonNote = `<div class="mt-2 text-[10px] text-rose-700 bg-rose-100/60 p-2 rounded border border-rose-200 font-bold flex items-center gap-1.5"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>🚨 Na:K Ratio = ${ratio.toFixed(1)} (< 27) สงสัยภาวะ Hypoadrenocorticism (Addison's disease)!</div>`;
+                            } else {
+                                addisonNote = `<div class="mt-1.5 text-[9px] text-slate-500 font-medium">Na:K Ratio = ${ratio.toFixed(1)} (ปกติ > 27)</div>`;
+                            }
+                        }
+
+                        let correctedNaHtml = "";
+                        if (!isNaN(Glu) && Glu > 100) {
+                            let correctedNa = 0;
+                            let factor = Glu > 400 ? 2.6 : 1.6;
+                            correctedNa = factor * ((Glu - 100) / 100) + Na;
+                            correctedNaHtml = `
+                                <div class="bg-amber-100/60 border border-amber-300 p-2 rounded mt-2 mb-2 text-[10px] text-amber-900 space-y-1 shadow-sm">
+                                    <div class="font-bold text-amber-800 flex items-center gap-1 text-[11px]">
+                                        <svg class="shrink-0" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                                        Pseudohyponatremia Check (Hyperglycemia)
+                                    </div>
+                                    <div class="pl-1">Blood Glucose = ${Glu.toFixed(0)} mg/dL 👉 <b class="text-amber-900 text-[11px]">Corrected Na⁺ = ${correctedNa.toFixed(1)} mEq/L</b></div>
+                                    <div class="text-[9px] font-medium leading-tight pl-1 text-amber-800/80">*Formula: Corrected Na = ${factor} × [(BG - 100)/100] + Measured Na</div>
+                                </div>
+                            `;
+                        }
+
+                        let severeHypoHtml = "";
+                        if (Na < 110 && !isNaN(w) && w > 0) {
+                            severeHypoHtml = `
+                                <div class="bg-rose-100/80 border border-rose-300 p-2 rounded mt-2 mb-2 text-[10px] text-rose-900 space-y-1 shadow-sm">
+                                    <div class="font-bold text-rose-700 flex items-center gap-1 text-[11px]">
+                                        <svg class="shrink-0" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                                        𝗦𝗲𝘃𝗲𝗿𝗲 𝗵𝘆𝗽𝗼𝘁𝗼𝗻𝗶𝗰 𝗵𝘆𝗽𝗼𝗻𝗮𝘁𝗿𝗲𝗺𝗶𝗮 (&lt;110) หรือ Symptomatic
+                                    </div>
+                                    <div class="font-bold pl-1">👉 ให้ 3% NaCl <span class="text-rose-700 underline">${(w * 2).toFixed(1)} mL</span> (2 mL/kg) over 10-15 min</div>
+                                    <div class="text-[9px] font-medium leading-tight pl-1 text-rose-800/80">*(This is expected to increase [Na] by 2 mEq/L) repeat จนกว่า Na จะสูงขึ้น 4-6 mEq/L</div>
+                                </div>
+                            `;
+                        } else if (Na < 110) {
+                            severeHypoHtml = `
+                                <div class="bg-rose-100/80 border border-rose-300 p-2 rounded mt-2 mb-2 text-[10px] text-rose-900 space-y-1 shadow-sm">
+                                    <div class="font-bold text-rose-700 flex items-center gap-1 text-[11px]">
+                                        <svg class="shrink-0" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                                        𝗦𝗲𝘃𝗲𝗿𝗲 𝗵𝘆𝗽𝗼𝘁𝗼𝗻𝗶𝗰 𝗵𝘆𝗽𝗼𝗻𝗮𝘁𝗿𝗲𝗺𝗶𝗮 (&lt;110) หรือ Symptomatic
+                                    </div>
+                                    <div class="font-bold pl-1">👉 ให้ 3% NaCl 2 mL/kg over 10-15 min <span class="font-medium">(กรุณากรอกน้ำหนัก)</span></div>
+                                    <div class="text-[9px] font-medium leading-tight pl-1 text-rose-800/80">*(This is expected to increase [Na] by 2 mEq/L) repeat จนกว่า Na จะสูงขึ้น 4-6 mEq/L</div>
+                                </div>
+                            `;
+                        }
+
+                        let euvolemicHtml = "";
+                        if (dehyd === 0 && !isNaN(w) && w > 0) {
+                            euvolemicHtml = `
+                                <div class="text-[9px] text-indigo-600 font-medium leading-tight mb-1 bg-indigo-50 p-1.5 rounded border border-indigo-100">
+                                    <b class="text-indigo-800">Euvolemic (Vol. Deficit = 0):</b> ใช้ 3% NaCl<br>
+                                    *Formula: Volume 3% NaCl (L) = Na deficit / 513<br>
+                                    👉 ต้องใช้ 3% NaCl ปริมาตร <b class="text-indigo-800">${(vol_L*1000).toFixed(0)} mL</b> (${vol_L.toFixed(3)} L)
+                                </div>
+                            `;
+                        }
+
+                        txHtml += `<div class="bg-white p-2.5 rounded border border-slate-200 mb-2 shadow-sm">
+                            <div class="text-[11px] font-bold text-blue-700 border-b border-slate-100 pb-1 mb-1 flex items-center gap-1">
+                                <svg class="shrink-0" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="m17 7-5-5-5 5"/><path d="m17 17-5 5-5-5"/></svg>
+                                Hyponatremia Treatment
+                            </div>
+                            
+                            ${correctedNaHtml}
+                            ${severeHypoHtml}
+
+                            <div class="text-[10px] text-slate-500 font-semibold mb-1 border-b border-slate-50 pb-1">
+                                มีภาวะโซเดียมในเลือดต่ำ (Na⁺ = ${Na.toFixed(1)}) <span class="text-emerald-600 font-medium ml-1">(Normal: ${naMin}-${naMax} mEq/L)</span>
+                            </div>
+                            <div class="mt-1 text-[10px] text-slate-600 space-y-1.5 pt-1.5">
+                                ${(!isNaN(w) && w > 0) ? `
+                                <div class="font-bold text-slate-700">Sodium Deficit: <span class="text-slate-800">${naDeficit.toFixed(1)} mEq</span></div>
+                                <div class="text-[9px] text-slate-400 font-medium leading-tight mb-1">*Formula: BW × 0.6 × (Target Na - Patient Na)</div>
+                                
+                                ${euvolemicHtml}
+                                
+                                <div class="pl-2 leading-tight space-y-1 mb-1">
+                                    <div>👉 <span class="font-semibold">Time to replace deficit:</span> ${time_h.toFixed(1)} h <span class="text-slate-400 font-medium">(*Formula: (Target Na - Patient Na) × 2 (Safe raise rate 0.5 mEq/L/h))</span></div>
+                                    <div>👉 <span class="font-semibold">Replacement Rate:</span> <b class="text-rose-600">${rate_ml_h.toFixed(1)} mL/h</b> <span class="text-[9px] text-slate-400 font-medium">(*Assumes 0.9% NaCl replacement)</span></div>
+                                </div>
+                                
+                                <div class="font-bold text-blue-700 mt-2 border-t border-slate-100 pt-1.5">💧 Fluid Selection Guide (12h block):</div>
+                                <div class="pl-2 leading-tight space-y-1 mb-1">
+                                    <div>👉 <span class="font-semibold">Target Increase (TI) in 12h:</span> ${ti_12h.toFixed(1)} mEq <span class="text-slate-400 font-medium">(${ti_hr.toFixed(1)} mEq/hr × 12h)</span></div>
+                                    <div>👉 <span class="font-semibold">Target Fluid [Na⁺+K⁺]:</span> <b class="text-blue-700">${fluidNaK.toFixed(1)} mEq/L</b></div>
+                                    <div class="text-[9px] text-slate-400 font-medium mt-0.5 mb-1">*Formula: Patient Na + [TI × (TBW + Vol(L)) <u class="text-rose-400">/ Vol(L)</u>]</div>
+                                </div>
+                                ` : ''}
+
+                                <div class="bg-slate-50 border border-slate-200 p-2 rounded mt-2">
+                                    <div class="font-bold text-slate-700 mb-1">📌 Na⁺ content ในน้ำเกลือแต่ละชนิด:</div>
+                                    <ul class="list-disc pl-4 text-slate-600 space-y-0.5">
+                                        <li><b class="text-slate-700">3% Hypertonic Saline :</b> 513 mEq/L</li>
+                                        <li><b class="text-slate-700">0.9% NSS :</b> 154 mEq/L</li>
+                                        <li><b class="text-slate-700">LRS, Acetar :</b> 130 mEq/L</li>
+                                        <li><b class="text-slate-700">0.45% NaCl :</b> 77 mEq/L</li>
+                                        <li><b class="text-slate-700">D5W :</b> 0 mEq/L</li>
+                                    </ul>
+                                </div>
+                                
+                                ${addisonNote}
+
+                                <div class="bg-rose-50 border border-rose-200 p-2 rounded mt-2 text-[10px] text-rose-800 space-y-1">
+                                    <div class="font-bold flex items-center gap-1">
+                                        <svg class="shrink-0" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                                        ข้อควรระวังอย่างยิ่ง (Crucial Warning):
+                                    </div>
+                                    <div>การปรับระดับ Na⁺ <b class="text-rose-700">ในกรณี Acute สามารถให้เรท 1 mEq/L/hr ได้</b> แต่<u class="font-bold">ห้ามเพิ่มเกิน 10-12 mEq/L ใน 24 ชั่วโมง</u><br>
+                                    <span class="text-[9px] text-rose-600 font-medium">(ระบบปรับใช้เรทปลอดภัยที่ 0.5 mEq/L/hr เป็นค่าเริ่มต้น เพื่อป้องกัน Osmotic Demyelination Syndrome ซึ่งทำลายสมองถาวร)</span></div>
+                                </div>
+
+                                <div class="bg-amber-50 border border-amber-200 p-2 rounded mt-2 text-[10px] text-amber-800 space-y-1">
+                                    <div><b>Note:</b> Check serum sodium levels every 4 to 6 hours during correction.</div>
+                                </div>
+
+                                <div class="bg-white border border-slate-200 p-2 rounded mt-2 text-[10px] text-slate-600 space-y-1.5">
+                                    <div class="font-bold text-slate-700 border-b border-slate-100 pb-1 mb-1">Differential Diagnosis (by Volume Status)</div>
+                                    <div>👉 <b class="text-slate-800">Hypovolemic (Na loss > Water loss):</b> GI losses (Vomiting/Diarrhea), Third spacing, Hypoadrenocorticism, Diuretics</div>
+                                    <div>👉 <b class="text-slate-800">Euvolemic (Water retention):</b> Psychogenic polydipsia, SIADH, Hypotonic fluid administration</div>
+                                    <div>👉 <b class="text-slate-800">Hypervolemic (Water gain > Na gain):</b> Congestive Heart Failure (CHF), Liver failure, Nephrotic syndrome, Advanced CKD</div>
+                                </div>
+                            </div>
+                        </div>`;
+                    }
+                }
+
+                // 7. Chloride Evaluation & Treatment
+                if (!isNaN(Cl)) {
+                    let clMin = 105;
+                    let clMax = 120;
+                    let naMean = sp === 'dog' ? 146.5 : 151.5;
+                    let correctedClHtml = "";
+                    
+                    if (!isNaN(Na)) {
+                        let corrCl = Cl * (naMean / Na);
+                        let clEvalText = "";
+                        if (corrCl < clMin) clEvalText = "👉 True Hypochloremia (มีการสูญเสีย Cl⁻ จริง ไม่ใช่จากน้ำเกิน)";
+                        else if (corrCl > clMax) clEvalText = "👉 True Hyperchloremia (มี Cl⁻ เกินจริง ไม่ใช่จากภาวะขาดน้ำ)";
+                        else clEvalText = "👉 Normal Corrected Cl (ระดับ Cl⁻ เปลี่ยนแปลงตามสัดส่วนของน้ำและโซเดียมเท่านั้น)";
+                        
+                        correctedClHtml = `
+                            <div class="bg-indigo-50/80 border border-indigo-200 p-2 rounded mt-2 mb-2 text-[10px] text-indigo-900 space-y-1 shadow-sm">
+                                <div class="font-bold text-indigo-800 flex items-center gap-1 text-[11px]">
+                                    <svg class="shrink-0" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                                    Corrected Chloride (แยกปัญหา Water Balance)
+                                </div>
+                                <div class="pl-1">Patient Na = ${Na.toFixed(1)} 👉 <b class="text-indigo-900 text-[11px]">Corrected Cl⁻ = ${corrCl.toFixed(1)} mEq/L</b></div>
+                                <div class="text-[9px] font-medium leading-tight pl-1 text-indigo-800/80">*Formula: Measured Cl × (Normal Na [${naMean}] / Patient Na)</div>
+                                <div class="text-[9px] font-bold leading-tight pl-1 text-indigo-700 mt-1">${clEvalText}</div>
+                            </div>
+                        `;
+                    }
+
+                    if (Cl < clMin) {
+                        txHtml += `<div class="bg-white p-2.5 rounded border border-slate-200 mb-2 shadow-sm">
+                            <div class="text-[11px] font-bold text-blue-700 border-b border-slate-100 pb-1 mb-1 flex items-center gap-1">
+                                <svg class="shrink-0" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="m17 7-5-5-5 5"/><path d="m17 17-5 5-5-5"/></svg>
+                                Hypochloremia Treatment
+                            </div>
+                            <div class="text-[10px] text-slate-500 font-semibold mb-1 border-b border-slate-50 pb-1">
+                                มีภาวะคลอไรด์ในเลือดต่ำ (Cl⁻ = ${Cl.toFixed(1)}) <span class="text-emerald-600 font-medium ml-1">(Normal: 105-120 mEq/L)</span>
+                            </div>
+                            ${correctedClHtml}
+                            <div class="mt-1 text-[10px] text-slate-600 space-y-1.5 pt-1.5">
+                                <div class="font-bold">1. Fluid Therapy <span class="font-normal text-slate-500">(Chloride-rich fluids)</span></div>
+                                <div class="pl-2">👉 ให้ <b>0.9% NaCl</b> (มี Cl⁻ 154 mEq/L) ถือเป็นตัวเลือกหลักในการแก้ Hypochloremic metabolic alkalosis</div>
+                                <div class="font-bold mt-1">2. Potassium Chloride (KCl) Supplementation</div>
+                                <div class="pl-2">👉 มักพบร่วมกับภาวะ Hypokalemia การเติม KCl ในสารน้ำจะช่วยแก้ไขทั้ง K⁺ และ Cl⁻ ไปพร้อมกัน</div>
+                            </div>
+                            <div class="bg-white border border-slate-200 p-2 rounded mt-2 text-[10px] text-slate-600 space-y-1.5">
+                                <div class="font-bold text-slate-700 border-b border-slate-100 pb-1 mb-1">Differential Diagnosis</div>
+                                <div>👉 <b class="text-slate-800">GI Loss (Gastric):</b> อาเจียนเอาของเหลวในกระเพาะอาหารออก (Loss of HCl), Gastric outflow obstruction</div>
+                                <div>👉 <b class="text-slate-800">Renal Loss:</b> การใช้ยาขับปัสสาวะกลุ่ม Loop diuretics (Furosemide) และ Thiazides</div>
+                                <div>👉 <b class="text-slate-800">Compensation:</b> Chronic respiratory acidosis (ไตขับ Cl⁻ ทิ้งเพื่อเก็บ HCO₃⁻)</div>
+                                <div>👉 <b class="text-slate-800">Dilutional:</b> Overhydration, CHF (มักจะพบ Na⁺ ต่ำร่วมด้วย ให้พิจารณา Corrected Cl⁻ เป็นหลัก)</div>
+                            </div>
+                        </div>`;
+                    } else if (Cl > clMax) {
+                        txHtml += `<div class="bg-white p-2.5 rounded border border-slate-200 mb-2 shadow-sm">
+                            <div class="text-[11px] font-bold text-rose-700 border-b border-slate-100 pb-1 mb-1 flex items-center gap-1">
+                                <svg class="shrink-0" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                                Hyperchloremia Treatment
+                            </div>
+                            <div class="text-[10px] text-slate-500 font-semibold mb-1 border-b border-slate-50 pb-1">
+                                มีภาวะคลอไรด์ในเลือดสูง (Cl⁻ = ${Cl.toFixed(1)}) <span class="text-emerald-600 font-medium ml-1">(Normal: 105-120 mEq/L)</span>
+                            </div>
+                            ${correctedClHtml}
+                            <div class="mt-1 text-[10px] text-slate-600 space-y-1.5 pt-1.5">
+                                <div class="font-bold">1. Fluid Selection <span class="font-normal text-slate-500">(Avoid high-chloride fluids)</span></div>
+                                <div class="pl-2">👉 <b>หยุดให้ 0.9% NaCl</b> (หากกำลังให้อยู่)</div>
+                                <div class="pl-2">👉 เปลี่ยนไปใช้สารน้ำที่มี Cl⁻ ต่ำและมีความสมดุลกว่า เช่น <b>LRS (Cl⁻ 109), Acetar, Plasmalyte</b> หรือ <b>0.45% NaCl</b> (หากมี Hypernatremia ร่วมด้วย)</div>
+                                <div class="font-bold mt-1">2. Treat Underlying Cause</div>
+                                <div class="pl-2">👉 แก้ไขภาวะ Dehydration และหยุดยั้งการสูญเสีย Bicarbonate (เช่น จากอาการท้องเสียรุนแรง)</div>
+                            </div>
+                            <div class="bg-white border border-slate-200 p-2 rounded mt-2 text-[10px] text-slate-600 space-y-1.5">
+                                <div class="font-bold text-slate-700 border-b border-slate-100 pb-1 mb-1">Differential Diagnosis</div>
+                                <div>👉 <b class="text-slate-800">Iatrogenic (พบบ่อยสุด):</b> การให้ 0.9% NaCl ปริมาณมาก หรือการเสริม KCl ในน้ำเกลือมากเกินไป</div>
+                                <div>👉 <b class="text-slate-800">GI Loss of HCO₃⁻:</b> ท้องเสียรุนแรง (Diarrhea) ทำให้เกิด Hyperchloremic (Normal AG) metabolic acidosis</div>
+                                <div>👉 <b class="text-slate-800">Renal Loss of HCO₃⁻:</b> Renal Tubular Acidosis (RTA), Addison's disease</div>
+                                <div>👉 <b class="text-slate-800">Pseudohyperchloremia:</b> การได้รับยา Potassium bromide (KBr) เครื่องตรวจบางรุ่นจะอ่านค่า Br⁻ ปนกับ Cl⁻ ทำให้ค่าหลอกสูง</div>
+                                <div>👉 <b class="text-slate-800">Free Water Loss:</b> Dehydration (มักจะพบ Na⁺ สูงร่วมด้วย ให้พิจารณา Corrected Cl⁻ เป็นหลัก)</div>
+                            </div>
+                        </div>`;
+                    }
+                }
+
+            } else {
+                // If weight is missing, check if they inputted any abnormal value that would need weight calculation
+                let needsDose = false;
+                if (hasABG && pH < 7.2 && HCO3 < 14) needsDose = true;
+                if (!isNaN(K) && (K < 3.5 || K > 5.5)) needsDose = true;
+                if (!isNaN(iCa) && (iCa < 1.1 || iCa > 1.4)) needsDose = true;
+                if (!isNaN(Mg) && (Mg < 0.4 || Mg > 0.6)) needsDose = true;
+                if (!isNaN(Phos) && (Phos < 2.5 || Phos > 4.5)) needsDose = true;
+                if (!isNaN(Glu) && (Glu < 60 || Glu > 250)) needsDose = true;
+                if (!isNaN(Na)) {
+                    let naMin = sp === 'dog' ? 139 : 145;
+                    let naMax = sp === 'dog' ? 154 : 158;
+                    if (Na < naMin || Na > naMax) needsDose = true;
+                }
+                
+                if (needsDose) {
+                    doseHtml += `<div class="bg-amber-50 p-2.5 text-amber-700 text-[10px] font-semibold rounded-lg border border-amber-200 mb-2">⚠ พบความผิดปกติของเกลือแร่ กรุณากรอก <b>"น้ำหนัก (kg)"</b> ด้านบนสุด เพื่อคำนวณปริมาณยาสำหรับแก้ไข (Correction Dose)</div>`;
                 }
             }
-            html += stepBlock(7, "Correction & Treatment", step7_res, isNaN(w) ? 'normal' : 'blue');
+
+            // 8. Lactate Evaluation (Does not require weight)
+            if (!isNaN(Lac) && Lac > 2.5) {
+                txHtml += `<div class="bg-white p-2.5 rounded border border-slate-200 mb-2 shadow-sm">
+                    <div class="text-[11px] font-bold text-rose-700 border-b border-slate-100 pb-1 mb-1 flex items-center gap-1">
+                        <svg class="shrink-0" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        Hyperlactatemia Evaluation
+                    </div>
+                    <div class="text-[10px] text-slate-500 font-semibold mb-1 border-b border-slate-50 pb-1">
+                        มีภาวะกรดแลคติกในเลือดสูง (Lactate = ${Lac.toFixed(2)}) <span class="text-emerald-600 font-medium ml-1">(Normal: < 2.5 mmol/L)</span>
+                    </div>
+                    <div class="mt-1 text-[10px] text-slate-600 space-y-1.5 pt-1.5">
+                        <div class="font-bold text-rose-700">Type A <span class="font-normal text-slate-500">(Tissue hypoperfusion → anaerobic glycolysis)</span></div>
+                        <div class="pl-2 leading-tight">👉 <span class="font-semibold">Examples:</span> Shock, GDV, trauma, hemorrhage, sepsis</div>
+                        <div class="font-bold text-blue-700 mt-1">Type B <span class="font-normal text-slate-500">(Normal perfusion; metabolic or drug-induced)</span></div>
+                        <div class="pl-2 leading-tight">👉 <span class="font-semibold">Examples:</span> Hepatic failure, neoplasia (lymphoma), thiamine deficiency, metformin</div>
+                        
+                        <div class="bg-slate-50 border border-slate-200 p-2 rounded mt-2">
+                            <div class="font-bold text-slate-700 mb-1">📌 Serial Lactate Monitoring Targets:</div>
+                            <ul class="list-disc pl-4 text-slate-600 space-y-0.5">
+                                <li><b class="text-emerald-600">Target:</b> ≥ 50% reduction in lactate within 6 hours of resuscitation</li>
+                                <li><b class="text-rose-600">Warning:</b> Failure to normalize lactate by 24 hours is a grave prognostic indicator</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>`;
+            } else if (!isNaN(Lac)) {
+                txHtml += `<div class="bg-white p-2.5 rounded border border-emerald-200 mb-2 shadow-sm text-[10px] text-emerald-700 font-semibold">✓ Lactate อยู่ในเกณฑ์ปกติ (Lactate = ${Lac.toFixed(2)} mmol/L)</div>`;
+            }
+
+            // Combine doseHtml and txHtml
+            let finalStep7Html = doseHtml + txHtml;
+
+            if (finalStep7Html === "") {
+                step7_res = `<span class='text-emerald-600 font-bold'>✓ ค่าเกลือแร่ที่กรอกมาไม่พบความผิดปกติรุนแรง หรือมีข้อมูลไม่พอประเมิน</span>`;
+            } else {
+                step7_res = finalStep7Html;
+            }
+            
+            html += stepBlock(7, "Correction & Treatment", step7_res, "blue");
 
             resDiv.innerHTML = html;
             resDiv.classList.remove('hidden');
         }
-
         window.onload = function() { 
             updateDoseUI(); 
             toggleComorbidState(); 
@@ -2765,7 +3727,7 @@
             });
 
             // Enter key for ABG 6-steps calc
-            ['abg_ph', 'abg_pco2', 'abg_hco3', 'abg_po2', 'abg_fio2', 'abg_na', 'abg_k', 'abg_cl', 'abg_bun', 'abg_glu', 'abg_osm', 'abg_alb', 'abg_phos', 'abg_weight'].forEach(id => {
+            ['abg_age', 'abg_dehyd', 'abg_ph', 'abg_pco2', 'abg_hco3', 'abg_po2', 'abg_fio2', 'abg_na', 'abg_k', 'abg_cl', 'abg_ica', 'abg_mg', 'abg_lac', 'abg_bun', 'abg_glu', 'abg_osm', 'abg_alb', 'abg_phos', 'abg_weight'].forEach(id => {
                 let el = document.getElementById(id);
                 if(el) el.addEventListener('keypress', function(e) { if (e.key === 'Enter') { e.preventDefault(); calculateABG(); } });
             });
