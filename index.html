@@ -660,7 +660,7 @@
         </div>
 
         <!-- ========================================== -->
-        <!-- COLUMN 6: SQAB ANALYSIS                    -->
+        <!-- COLUMN 6: SQAB ANALYSIS (ACTIVE)           -->
         <!-- ========================================== -->
         <div class="w-full bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
             <div class="bg-cozy-peach p-4 text-center">
@@ -719,7 +719,7 @@
                     </div>
 
                     <button onclick="calculateSQAB()" class="w-full bg-cozy-peach hover:bg-cozy-peach-dark text-white font-bold py-2.5 px-4 rounded-xl shadow-sm transition-colors flex items-center justify-center gap-2 mt-3 text-sm">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 17 22 12"/></svg>
                         วิเคราะห์ SQAB
                     </button>
                 </div>
@@ -2426,7 +2426,7 @@
             else if (BE_Cl >= 1.0) { 
                 alkCauses.push("Hypochloremia"); 
                 diffDiag.push("<b>Hypochloremia:</b> อาเจียนหรือสูญเสียกรดทางกระเพาะอาหาร (Gastric loss), Loop diuretics (Furosemide).");
-                txPlan.push("<b>Hypochloremia:</b> ให้ 0.9% NaCl เพื่อเติม Cl⁻ และพิจารณาเสริม KCl ในสารน้ำ.");
+                txPlan.push("<b>Hypochloremia:</b> ให้ 0.9% NaCl เพื่อเติม Cl⁻ และพิจารณาเสริม KClในสารน้ำ.");
             }
 
             // BE_Alb (Albumin)
@@ -3030,71 +3030,120 @@
 
                 // 2. Potassium Correction
                 if (!isNaN(K)) {
-                    if (K <= 5.0 && K > 0) {
-                        let addK1L = 0;
-                        let maxRate_ml_kg_hr = 0;
+                    if (K <= 5.5 && K > 0) {
+                        let suggestedDose = 0.05;
+                        let suggestedText = "0.05 mEq/kg/hr";
+                        let titleLevel = "Maintenance";
+                        let alertColor = "emerald";
                         
-                        if (K < 2.1) { addK1L = 80; maxRate_ml_kg_hr = 6; }
-                        else if (K <= 2.5) { addK1L = 60; maxRate_ml_kg_hr = 8; }
-                        else if (K <= 3.0) { addK1L = 40; maxRate_ml_kg_hr = 12; }
-                        else if (K <= 3.5) { addK1L = 28; maxRate_ml_kg_hr = 18; }
-                        else { addK1L = 20; maxRate_ml_kg_hr = 25; }
+                        if (K < 2.0) { suggestedDose = 0.5; suggestedText = "0.5 mEq/kg/hr"; titleLevel = "Severe Hypokalemia (<2.0)"; alertColor = "rose"; }
+                        else if (K <= 2.5) { suggestedDose = 0.3; suggestedText = "0.3 - 0.4 mEq/kg/hr"; titleLevel = "Severe Hypokalemia (2.0-2.5)"; alertColor = "rose"; }
+                        else if (K <= 3.0) { suggestedDose = 0.2; suggestedText = "0.2 - 0.25 mEq/kg/hr"; titleLevel = "Moderate Hypokalemia (2.6-3.0)"; alertColor = "amber"; }
+                        else if (K <= 3.5) { suggestedDose = 0.1; suggestedText = "0.1 - 0.15 mEq/kg/hr"; titleLevel = "Mild Hypokalemia (3.1-3.5)"; alertColor = "indigo"; }
+                        else { titleLevel = "Normal / Maintenance (>3.5)"; alertColor = "emerald"; }
 
-                        let maxFluidRate_ml_hr = maxRate_ml_kg_hr * w;
-
-                        if (K <= 3.5) {
-                            let outpatientHtml = "";
-                            if (K >= 3.0 && K <= 3.5) {
-                                let oralDoseMin = (w / 4.5) * 2;
-                                let oralDoseMax = (w / 4.5) * 2.2;
-                                outpatientHtml = `
-                                <div class="bg-indigo-50 border border-indigo-200 p-2 rounded mt-2 text-[10px] text-indigo-800 space-y-1">
-                                    <div class="font-bold flex items-center gap-1 text-[11px]">
-                                        <svg class="shrink-0" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                                        Outpatient: Mild Hypokalemia (K⁺ 3.0-3.5)
-                                    </div>
-                                    <div class="font-bold text-indigo-900">👉 Oral supplementation: Potassium gluconate</div>
-                                    <div class="pl-2">Dose: <b class="text-indigo-900 text-[11px]">${oralDoseMin.toFixed(1)} - ${oralDoseMax.toFixed(1)} mEq</b> PO with food, BID</div>
-                                    <div class="text-[9px] text-indigo-600 pl-2 leading-tight">*(Formula: 2-2.2 mEq/4.5 kg) adjusted dose based on potassium level</div>
-                                </div>`;
-                            }
-
-                            doseHtml += `<div class="bg-white p-2.5 rounded border border-slate-200 mb-2 shadow-sm">
-                                <div class="text-[11px] font-bold text-cozy-purple-dark border-b border-slate-100 pb-1 mb-1 flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Potassium (K⁺) Supplementation</div>
-                                <div class="text-[10px] text-slate-500 font-semibold mb-1 border-b border-slate-50 pb-1">มีภาวะ Hypokalemia (K⁺ = ${K.toFixed(2)}) <span class="text-emerald-600 font-medium ml-1">(Normal: 3.5 - 5.5)</span></div>
-                                ผสม KCl เติมลงในสารน้ำ (ถุง 1 L) = <b class="text-rose-600">${addK1L} mEq</b><br>
-                                <span class="text-[10px] text-slate-500">(หรือเติม ${addK1L/4} mEq ในถุง 250 mL)</span>
-                                <div class="mt-1.5 pt-1.5 border-t border-slate-100 text-[10px] text-slate-600 space-y-1">
-                                    <div><b class="text-rose-600">⚠ Maximal Fluid Infusion Rate:</b> <b class="text-slate-800">${maxRate_ml_kg_hr} mL/kg/hr</b> <span class="text-rose-600 font-bold ml-1">(*not exceed 0.5 mEq/kg/hr)</span></div>
-                                    <div class="bg-rose-50 border border-rose-100 p-1.5 rounded text-rose-700 font-semibold mt-1">👉 สำหรับสัตว์ตัวนี้ (${w} kg) <u class="font-black">ห้ามปล่อยเรทเกิน ${maxFluidRate_ml_hr.toFixed(0)} mL/hr</u> เด็ดขาด!</div>
-                                </div>
-                                
-                                ${outpatientHtml}
-
-                                <div class="bg-amber-50 border border-amber-200 p-2 rounded mt-2 text-[10px] text-amber-800 space-y-1">
-                                    <div><b>Note:</b> Do NOT co-administer with glucose-containing fluids (drives K⁺ into cells).</div>
-                                    <div><b>Note:</b> Recheck electrolytes every 4–6 hours during active supplementation.</div>
-                                </div>
-
-                                <div class="bg-white border border-slate-200 p-2 rounded mt-2 text-[10px] text-slate-600 space-y-1.5">
-                                    <div class="font-bold text-slate-700 border-b border-slate-100 pb-1 mb-1">Differential Diagnosis</div>
-                                    <div>👉 <b class="text-slate-800">Transcellular shift (เข้าเซลล์):</b> Alkalemia, Insulin or Glucose therapy</div>
-                                    <div>👉 <b class="text-slate-800">Increased loss:</b> GI loss (Vomiting, Diarrhea), Renal loss (CKD, Diuretics, Post-obstructive diuresis, Hyperaldosteronism)</div>
-                                    <div>👉 <b class="text-slate-800">Decreased intake:</b> Anorexia, Prolonged K⁺-free fluids (e.g., 0.9% NaCl without K⁺)</div>
-                                </div>
-                            </div>`;
-                        } else {
-                            doseHtml += `<div class="bg-white p-2.5 rounded border border-emerald-100 mb-2 shadow-sm">
-                                <div class="text-[11px] font-bold text-cozy-purple-dark border-b border-emerald-50 pb-1 mb-1 flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> Potassium (K⁺) Maintenance</div>
-                                <div class="text-[10px] text-slate-500 font-semibold mb-1 border-b border-slate-50 pb-1">K⁺ อยู่ในเกณฑ์ปกติ (K⁺ = ${K.toFixed(2)}) อาจพิจารณาให้ Maintenance</div>
-                                ผสม KCl เติมลงในสารน้ำ (ถุง 1 L) = <b class="text-emerald-600">${addK1L} mEq</b><br>
-                                <span class="text-[10px] text-slate-500">(หรือเติม ${addK1L/4} mEq ในถุง 250 mL)</span>
-                                <div class="mt-1.5 pt-1.5 border-t border-slate-100 text-[10px] text-slate-600 space-y-1">
-                                    <div><b class="text-emerald-700">Maximal Fluid Infusion Rate:</b> <b class="text-slate-800">${maxRate_ml_kg_hr} mL/kg/hr</b> <span class="text-emerald-700 font-bold ml-1">(*not exceed 0.5 mEq/kg/hr)</span></div>
-                                    <div class="bg-emerald-50 border border-emerald-100 p-1.5 rounded text-emerald-800 font-semibold mt-1">👉 สำหรับสัตว์ตัวนี้ (${w} kg) ห้ามปล่อยเรทเกิน ${maxFluidRate_ml_hr.toFixed(0)} mL/hr</div>
-                                </div>
-                            </div>`;
+                        let maint_day = 0;
+                        if (sp === 'dog') {
+                            maint_day = 132 * Math.pow(w, 0.75);
+                            if (age === 'pediatric') maint_day *= 3;
+                        } else { // cat
+                            maint_day = 80 * Math.pow(w, 0.75);
+                            if (age === 'pediatric') maint_day *= 2.5;
                         }
+                        let maintRate = maint_day / 24;
+                        
+                        let defTotal = w * dehyd * 10;
+                        let rate12 = maintRate + (defTotal / 12);
+                        let rate24 = maintRate + (defTotal / 24);
+                        let defaultRate = dehyd > 0 ? rate24 : maintRate;
+
+                        let rateButtonsHtml = "";
+                        if (dehyd > 0) {
+                            rateButtonsHtml = `
+                                <button onclick="document.getElementById('kcl_rate').value='${rate12.toFixed(1)}'; updateKCl();" class="flex-1 bg-white border border-indigo-200 text-indigo-700 hover:bg-indigo-100 py-1.5 rounded-lg text-[10px] font-bold transition-colors shadow-sm">เรท 12 ชม.<br><span class="font-normal text-[9px] text-indigo-500">Maint+Rehyd</span><br>${rate12.toFixed(1)}</button>
+                                <button onclick="document.getElementById('kcl_rate').value='${rate24.toFixed(1)}'; updateKCl();" class="flex-1 bg-white border border-indigo-200 text-indigo-700 hover:bg-indigo-100 py-1.5 rounded-lg text-[10px] font-bold transition-colors shadow-sm">เรท 24 ชม.<br><span class="font-normal text-[9px] text-indigo-500">Maint+Rehyd</span><br>${rate24.toFixed(1)}</button>
+                                <button onclick="document.getElementById('kcl_rate').value='${maintRate.toFixed(1)}'; updateKCl();" class="flex-1 bg-white border border-indigo-200 text-indigo-700 hover:bg-indigo-100 py-1.5 rounded-lg text-[10px] font-bold transition-colors shadow-sm">Maintenance<br><span class="font-normal text-[9px] text-indigo-500">Only</span><br>${maintRate.toFixed(1)}</button>
+                            `;
+                        } else {
+                            rateButtonsHtml = `
+                                <button onclick="document.getElementById('kcl_rate').value='${maintRate.toFixed(1)}'; updateKCl();" class="w-full bg-white border border-indigo-200 text-indigo-700 hover:bg-indigo-100 py-1.5 rounded-lg text-[10px] font-bold transition-colors shadow-sm">ใช้เรท Maintenance (${maintRate.toFixed(1)} mL/hr)</button>
+                            `;
+                        }
+
+                        doseHtml += `<div class="bg-white p-2.5 rounded border border-slate-200 mb-2 shadow-sm">
+                            <div class="text-[11px] font-bold text-cozy-purple-dark border-b border-slate-100 pb-1 mb-1 flex items-center gap-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> 
+                                Potassium (K⁺) ${titleLevel.includes('Maintenance') ? 'Maintenance' : 'Supplementation'}
+                            </div>
+                            <div class="text-[10px] text-slate-500 font-semibold mb-2">
+                                ระดับ K⁺ = ${K.toFixed(2)} mEq/L 
+                                <span class="text-${alertColor}-600 ml-1 font-bold">(${titleLevel})</span>
+                            </div>
+
+                            <div class="bg-indigo-50/60 p-3 rounded-xl border border-indigo-100 text-[10px]">
+                                <div class="font-bold text-indigo-900 mb-1 flex items-center gap-1.5 text-[11px]">
+                                    <svg class="shrink-0 text-indigo-600" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+                                    เครื่องคำนวณการผสม KCl ลงในถุงน้ำเกลือ
+                                </div>
+                                <div class="text-indigo-700/80 mb-3 leading-tight border-b border-indigo-200/50 pb-2">
+                                    เมื่อทราบ Dose (mEq/kg/hr) คุณหมอต้องกำหนดเรทน้ำเกลือ (mL/hr) ที่จะให้คนไข้ก่อน ระบบจึงจะคำนวณย้อนกลับได้ว่าต้องผสม KCl ลงในถุงเท่าไหร่<br>
+                                    <div class="mt-1.5 bg-white p-1.5 rounded-lg border border-indigo-100 text-indigo-800 shadow-sm flex items-center gap-1">
+                                        💡 <b>Suggested Dose: <span class="text-rose-600">${suggestedText}</span></b>
+                                    </div>
+                                </div>
+
+                                <div class="grid grid-cols-2 gap-2 mb-2">
+                                    <div>
+                                        <label class="block font-bold text-indigo-900 mb-1">Dose (mEq/kg/hr)</label>
+                                        <input type="number" id="kcl_dose" value="${suggestedDose}" step="0.05" oninput="updateKCl()" class="w-full rounded-lg border-indigo-200 p-2 text-indigo-900 font-bold outline-none focus:ring-indigo-400 focus:border-indigo-400 shadow-sm bg-white">
+                                    </div>
+                                    <div>
+                                        <label class="block font-bold text-indigo-900 mb-1">เรทน้ำเกลือ (mL/hr)</label>
+                                        <input type="number" id="kcl_rate" value="${defaultRate.toFixed(1)}" step="0.1" oninput="updateKCl()" class="w-full rounded-lg border-indigo-200 p-2 text-indigo-900 font-bold outline-none focus:ring-indigo-400 focus:border-indigo-400 shadow-sm bg-white">
+                                    </div>
+                                </div>
+
+                                <div class="flex gap-1.5 mb-3">
+                                    ${rateButtonsHtml}
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="block font-bold text-indigo-900 mb-1">ขนาดถุงน้ำเกลือ (mL)</label>
+                                    <select id="kcl_bag" onchange="updateKCl()" class="w-full rounded-lg border-indigo-200 p-2 text-indigo-900 font-bold outline-none focus:ring-indigo-400 focus:border-indigo-400 shadow-sm bg-white cursor-pointer">
+                                        <option value="100">100 mL</option>
+                                        <option value="250">250 mL</option>
+                                        <option value="500">500 mL</option>
+                                        <option value="1000" selected>1,000 mL</option>
+                                    </select>
+                                </div>
+
+                                <div class="p-3 bg-white rounded-xl border border-indigo-200 text-center shadow-sm">
+                                    <div class="text-indigo-800 font-bold mb-1.5 text-[11px]">ปริมาณ KCl ที่ต้องดูดมาผสมในถุงนี้:</div>
+                                    <div class="text-2xl font-black text-rose-600 mb-1 leading-none"><span id="kcl_result_meq">0.0</span> <span class="text-sm font-bold">mEq</span></div>
+                                    <div class="text-[10px] text-slate-500 font-medium">(ดูดจากแอมพูล = <span id="kcl_result_ml" class="font-bold text-slate-700">0.0</span> mL กรณี 2mEq/mL)</div>
+                                </div>
+                                <div class="text-[8px] text-center text-indigo-400 mt-2 font-medium">*สูตร: [ (Dose × น้ำหนัก) ÷ เรทน้ำเกลือ ] × ขนาดถุง</div>
+                            </div>
+                            
+                            ${K <= 3.5 && K >= 3.0 ? `
+                            <div class="bg-slate-50 border border-slate-200 p-2 rounded-lg mt-2 text-[10px] text-slate-700 space-y-1">
+                                <div class="font-bold">👉 Oral supplementation: Potassium gluconate</div>
+                                <div class="pl-2">Dose: <b class="text-slate-900"> ${(w / 4.5 * 2).toFixed(1)} - ${(w / 4.5 * 2.2).toFixed(1)} mEq</b> PO with food, BID</div>
+                                <div class="text-[8px] text-slate-500 pl-2">*(Formula: 2-2.2 mEq/4.5 kg)</div>
+                            </div>` : ''}
+
+                            <div class="bg-amber-50 border border-amber-200 p-2 rounded-lg mt-2 text-[10px] text-amber-800 space-y-1">
+                                <div><b>Note:</b> Do NOT co-administer with glucose-containing fluids (drives K⁺ into cells).</div>
+                                <div><b>Note:</b> Recheck electrolytes every 4–6 hours during active supplementation.</div>
+                            </div>
+
+                            <div class="bg-white border border-slate-200 p-2 rounded-lg mt-2 text-[10px] text-slate-600 space-y-1.5">
+                                <div class="font-bold text-slate-700 border-b border-slate-100 pb-1 mb-1">Differential Diagnosis</div>
+                                <div>👉 <b class="text-slate-800">Transcellular shift (เข้าเซลล์):</b> Alkalemia, Insulin or Glucose therapy</div>
+                                <div>👉 <b class="text-slate-800">Increased loss:</b> GI loss (Vomiting, Diarrhea), Renal loss (CKD, Diuretics, Post-obstructive diuresis, Hyperaldosteronism)</div>
+                                <div>👉 <b class="text-slate-800">Decreased intake:</b> Anorexia, Prolonged K⁺-free fluids (e.g., 0.9% NaCl without K⁺)</div>
+                            </div>
+                        </div>`;
                     } else if (K > 5.5) {
                         doseHtml += `<div class="bg-white p-2.5 rounded border border-slate-200 mb-2 shadow-sm">
                             <div class="text-[11px] font-bold text-rose-700 border-b border-rose-100 pb-1 mb-1 flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Hyperkalemia Treatment</div>
@@ -3326,6 +3375,26 @@
                     let naMin = sp === 'dog' ? 139 : 145;
                     let naMax = sp === 'dog' ? 154 : 158;
                     let naMean = sp === 'dog' ? 146.5 : 151.5;
+                    
+                    let maint_day = 0;
+                    let def24 = 0;
+                    let planned_vol_12h_ml = 0;
+                    let planned_vol_12h_L = 0;
+                    let ageLabel = age === 'pediatric' ? 'Pediatric' : 'Adult';
+                    let spLabel = sp === 'dog' ? 'Dog' : 'Cat';
+
+                    if (!isNaN(w) && w > 0) {
+                        if (sp === 'dog') {
+                            maint_day = 132 * Math.pow(w, 0.75);
+                            if (age === 'pediatric') maint_day *= 3;
+                        } else { // cat
+                            maint_day = 80 * Math.pow(w, 0.75);
+                            if (age === 'pediatric') maint_day *= 2.5;
+                        }
+                        def24 = w * dehyd * 10;
+                        planned_vol_12h_ml = (maint_day + def24) / 2;
+                        planned_vol_12h_L = planned_vol_12h_ml / 1000;
+                    }
 
                     if (Na > naMax) {
                         let fwd_ml = 0;
@@ -3335,7 +3404,6 @@
                         let tbw = 0;
                         let td_hr = onset === 'acute' ? 1.0 : 0.5;
                         let td_12h = td_hr * 12;
-                        let vol_12h = 0;
 
                         if (!isNaN(w) && w > 0) {
                             tbw = w * 0.6;
@@ -3350,11 +3418,8 @@
                             // Rate
                             rate_ml_h = fwd_ml / time_h;
                             
-                            // Volume in 12h
-                            vol_12h = (rate_ml_h * 12) / 1000; // in L
-                            
                             // Target Fluid [Na+K]
-                            fluidNaK = Na - (td_12h * (tbw + vol_12h));
+                            fluidNaK = Na - (td_12h * (tbw + planned_vol_12h_L));
                         }
 
                         txHtml += `<div class="bg-white p-2.5 rounded border border-slate-200 mb-2 shadow-sm">
@@ -3375,10 +3440,13 @@
                                 </div>
                                 
                                 <div class="font-bold text-blue-700 mt-2 border-t border-slate-100 pt-1.5">💧 Fluid Selection Guide (12h block):</div>
-                                <div class="pl-2 leading-tight space-y-1 mb-1">
-                                    <div>👉 <span class="font-semibold">Target Decrease (TD) in 12h:</span> ${td_12h.toFixed(1)} mEq <span class="text-slate-400 font-medium">(${td_hr.toFixed(1)} mEq/hr × 12h)</span></div>
-                                    <div>👉 <span class="font-semibold">Target Fluid [Na⁺+K⁺]:</span> <b class="text-blue-700">${fluidNaK.toFixed(1)} mEq/L</b></div>
-                                    <div class="text-[9px] text-slate-400 font-medium mt-0.5 mb-1">*Formula: Patient Na - [TD × (TBW + Volume of fluid(L))]</div>
+                                <div class="pl-2 leading-tight space-y-1.5 mb-1 mt-1.5">
+                                    <div>👉 Maint. (24h): ${maint_day.toFixed(0)} mL <span class="text-slate-400 font-medium">(${ageLabel} ${spLabel})</span></div>
+                                    <div>👉 Vol. Deficit (24h): ${def24.toFixed(0)} mL <span class="text-slate-400 font-medium">(${dehyd}% Dehydration)</span></div>
+                                    <div class="border-t border-slate-50 pt-1 mt-1">👉 Planned Vol. of fluid (12h): ${planned_vol_12h_ml.toFixed(0)} mL (${planned_vol_12h_L.toFixed(3)} L) <span class="text-[9px] text-slate-400 font-medium">*คิดจาก (Maint + Deficit)/2</span></div>
+                                    <div class="mt-1">👉 Target Decrease (TD) in 12h: ${td_12h.toFixed(1)} mEq <span class="text-slate-400 font-medium">(${td_hr.toFixed(1)} mEq/hr × 12h)</span></div>
+                                    <div>👉 Target Fluid [Na⁺+K⁺]: <b class="text-blue-700">${fluidNaK.toFixed(1)} mEq/L</b></div>
+                                    <div class="text-[9px] text-slate-400 font-medium mt-0.5 mb-1">*Formula: Patient Na - [TD × (TBW + Vol(L))]</div>
                                 </div>
                                 ` : ''}
                                 
@@ -3406,7 +3474,6 @@
                         let tbw = 0;
                         let ti_hr = 0.5; // Always raise at safe rate 0.5 mEq/L/hr
                         let ti_12h = ti_hr * 12;
-                        let vol_12h = 0;
                         let vol_L = 0;
 
                         if (!isNaN(w) && w > 0) {
@@ -3421,11 +3488,8 @@
                             vol_L = naDeficit / 154;
                             rate_ml_h = (vol_L * 1000) / time_h;
                             
-                            // Volume in 12h
-                            vol_12h = (rate_ml_h * 12) / 1000;
-                            
                             // Target Fluid [Na+K]
-                            fluidNaK = Na + (ti_12h * (tbw + vol_12h));
+                            fluidNaK = Na + (ti_12h * (tbw + planned_vol_12h_L));
                         }
                         
                         let addisonNote = "";
@@ -3516,10 +3580,13 @@
                                 </div>
                                 
                                 <div class="font-bold text-blue-700 mt-2 border-t border-slate-100 pt-1.5">💧 Fluid Selection Guide (12h block):</div>
-                                <div class="pl-2 leading-tight space-y-1 mb-1">
-                                    <div>👉 <span class="font-semibold">Target Increase (TI) in 12h:</span> ${ti_12h.toFixed(1)} mEq <span class="text-slate-400 font-medium">(${ti_hr.toFixed(1)} mEq/hr × 12h)</span></div>
-                                    <div>👉 <span class="font-semibold">Target Fluid [Na⁺+K⁺]:</span> <b class="text-blue-700">${fluidNaK.toFixed(1)} mEq/L</b></div>
-                                    <div class="text-[9px] text-slate-400 font-medium mt-0.5 mb-1">*Formula: Patient Na + [TI × (TBW + Vol(L)) <u class="text-rose-400">/ Vol(L)</u>]</div>
+                                <div class="pl-2 leading-tight space-y-1.5 mb-1 mt-1.5">
+                                    <div>👉 Maint. (24h): ${maint_day.toFixed(0)} mL <span class="text-slate-400 font-medium">(${ageLabel} ${spLabel})</span></div>
+                                    <div>👉 Vol. Deficit (24h): ${def24.toFixed(0)} mL <span class="text-slate-400 font-medium">(${dehyd}% Dehydration)</span></div>
+                                    <div class="border-t border-slate-50 pt-1 mt-1">👉 Planned Vol. of fluid (12h): ${planned_vol_12h_ml.toFixed(0)} mL (${planned_vol_12h_L.toFixed(3)} L) <span class="text-[9px] text-slate-400 font-medium">*คิดจาก (Maint + Deficit)/2</span></div>
+                                    <div class="mt-1">👉 Target Increase (TI) in 12h: ${ti_12h.toFixed(1)} mEq <span class="text-slate-400 font-medium">(${ti_hr.toFixed(1)} mEq/hr × 12h)</span></div>
+                                    <div>👉 Target Fluid [Na⁺+K⁺]: <b class="text-blue-700">${fluidNaK.toFixed(1)} mEq/L</b></div>
+                                    <div class="text-[9px] text-slate-400 font-medium mt-0.5 mb-1">*Formula: Patient Na + [TI × (TBW + Vol(L))]</div>
                                 </div>
                                 ` : ''}
 
@@ -3534,6 +3601,54 @@
                                     </ul>
                                 </div>
                                 
+                                <div class="bg-indigo-50/60 p-3 rounded-xl border border-indigo-100 text-[10px] mt-2">
+                                    <div class="font-bold text-indigo-900 mb-2 flex items-center gap-1.5 text-[11px]">
+                                        <svg class="shrink-0 text-indigo-600" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"></path><path d="M12 12v9"></path><path d="m8 17 4 4 4-4"></path></svg>
+                                        เครื่องคำนวณ Improved Adrogué–Madias (S Chen, 2020)
+                                    </div>
+                                    
+                                    <div class="bg-white p-2 rounded-lg border border-indigo-100 mb-2 shadow-sm">
+                                        <div class="font-bold text-indigo-800 mb-1.5 border-b border-indigo-50 pb-1">1. คำนวณหาค่าการเปลี่ยนแปลงของ Na⁺ (Δ[Na]) เมื่อทราบ V</div>
+                                        <div class="grid grid-cols-2 gap-2 mb-2">
+                                            <div>
+                                                <label class="block font-bold text-indigo-900 mb-1 text-[9px]">[Na+K] in Fluid (mEq/L)</label>
+                                                <input type="number" id="am1_fluid" value="154" step="1" oninput="updateAM1()" class="w-full rounded border-indigo-200 p-1.5 text-indigo-900 font-bold outline-none focus:ring-indigo-400 focus:border-indigo-400 shadow-sm bg-slate-50">
+                                            </div>
+                                            <div>
+                                                <label class="block font-bold text-indigo-900 mb-1 text-[9px]">Volume V (Liters)</label>
+                                                <input type="number" id="am1_vol" value="0.5" step="0.1" oninput="updateAM1()" class="w-full rounded border-indigo-200 p-1.5 text-indigo-900 font-bold outline-none focus:ring-indigo-400 focus:border-indigo-400 shadow-sm bg-slate-50">
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center justify-between bg-indigo-50/50 p-1.5 rounded border border-indigo-50">
+                                            <div>
+                                                <span class="text-indigo-600 font-bold">Δ[Na] =</span> <span id="am1_delta" class="font-black text-rose-600">0.00</span> mEq/L
+                                            </div>
+                                            <div>
+                                                <span class="text-indigo-600 font-bold">New [Na] =</span> <span id="am1_final" class="font-black text-indigo-900">0.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="bg-white p-2 rounded-lg border border-indigo-100 shadow-sm">
+                                        <div class="font-bold text-indigo-800 mb-1.5 border-b border-indigo-50 pb-1">2. คำนวณหาปริมาตรสารน้ำ (V) เมื่อกำหนด Target Na⁺</div>
+                                        <div class="grid grid-cols-2 gap-2 mb-2">
+                                            <div>
+                                                <label class="block font-bold text-indigo-900 mb-1 text-[9px]">[Na+K] in Fluid (mEq/L)</label>
+                                                <input type="number" id="am2_fluid" value="154" step="1" oninput="updateAM2()" class="w-full rounded border-indigo-200 p-1.5 text-indigo-900 font-bold outline-none focus:ring-indigo-400 focus:border-indigo-400 shadow-sm bg-slate-50">
+                                            </div>
+                                            <div>
+                                                <label class="block font-bold text-indigo-900 mb-1 text-[9px]">Target Na⁺ ([Na]₂)</label>
+                                                <input type="number" id="am2_target" value="${(Na + 5).toFixed(1)}" step="0.1" oninput="updateAM2()" class="w-full rounded border-indigo-200 p-1.5 text-indigo-900 font-bold outline-none focus:ring-indigo-400 focus:border-indigo-400 shadow-sm bg-slate-50">
+                                            </div>
+                                        </div>
+                                        <div class="text-center bg-indigo-50/50 p-1.5 rounded border border-indigo-50">
+                                            <div class="text-indigo-800 font-bold mb-0.5 text-[10px]">ปริมาตรน้ำเกลือที่ต้องให้ (V):</div>
+                                            <div class="text-lg font-black text-rose-600 leading-none"><span id="am2_vol_ml">0</span> <span class="text-xs font-bold">mL</span></div>
+                                            <div class="text-[9px] text-slate-500 font-medium">(<span id="am2_vol_l">0.000</span> Liters)</div>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 ${addisonNote}
 
                                 <div class="bg-rose-50 border border-rose-200 p-2 rounded mt-2 text-[10px] text-rose-800 space-y-1">
@@ -3702,7 +3817,79 @@
 
             resDiv.innerHTML = html;
             resDiv.classList.remove('hidden');
+
+            if (document.getElementById('kcl_dose')) updateKCl();
+            if (document.getElementById('am1_fluid')) { updateAM1(); updateAM2(); }
         }
+
+        function updateKCl() {
+            const w = parseFloat(document.getElementById('abg_weight').value);
+            const dose = parseFloat(document.getElementById('kcl_dose').value);
+            const rate = parseFloat(document.getElementById('kcl_rate').value);
+            const bag = parseFloat(document.getElementById('kcl_bag').value);
+            
+            if(!isNaN(w) && !isNaN(dose) && !isNaN(rate) && !isNaN(bag) && rate > 0) {
+                const meq = ((dose * w) / rate) * bag;
+                const ml = meq / 2; // Assuming 2 mEq/mL
+                document.getElementById('kcl_result_meq').innerText = meq.toFixed(1);
+                document.getElementById('kcl_result_ml').innerText = ml.toFixed(1);
+            } else {
+                document.getElementById('kcl_result_meq').innerText = "0.0";
+                document.getElementById('kcl_result_ml').innerText = "0.0";
+            }
+        }
+
+        function updateAM1() {
+            const w = parseFloat(document.getElementById('abg_weight').value);
+            const na1 = parseFloat(document.getElementById('abg_na').value);
+            const fluidNaK = parseFloat(document.getElementById('am1_fluid').value);
+            const volL = parseFloat(document.getElementById('am1_vol').value);
+
+            if(!isNaN(w) && !isNaN(na1) && !isNaN(fluidNaK) && !isNaN(volL)) {
+                const tbw = w * 0.6;
+                const deltaNa = ((fluidNaK - na1) / (tbw + volL)) * volL;
+                const finalNa = na1 + deltaNa;
+                document.getElementById('am1_delta').innerText = (deltaNa > 0 ? '+' : '') + deltaNa.toFixed(2);
+                document.getElementById('am1_final').innerText = finalNa.toFixed(2);
+            } else {
+                if(document.getElementById('am1_delta')) {
+                    document.getElementById('am1_delta').innerText = "0.00";
+                    document.getElementById('am1_final').innerText = "0.00";
+                }
+            }
+        }
+
+        function updateAM2() {
+            const w = parseFloat(document.getElementById('abg_weight').value);
+            const na1 = parseFloat(document.getElementById('abg_na').value);
+            const fluidNaK = parseFloat(document.getElementById('am2_fluid').value);
+            const targetNa = parseFloat(document.getElementById('am2_target').value);
+
+            if(!isNaN(w) && !isNaN(na1) && !isNaN(fluidNaK) && !isNaN(targetNa)) {
+                const tbw = w * 0.6;
+                const deltaNa = targetNa - na1;
+                
+                const denominator = fluidNaK - targetNa;
+                if (denominator === 0) {
+                    document.getElementById('am2_vol_l').innerText = "N/A";
+                    document.getElementById('am2_vol_ml').innerText = "N/A";
+                    return;
+                }
+                
+                const volL = (deltaNa * tbw) / denominator;
+                
+                if (volL < 0) {
+                     document.getElementById('am2_vol_l').innerText = "เป็นไปไม่ได้";
+                     document.getElementById('am2_vol_ml').innerText = "-";
+                } else {
+                    document.getElementById('am2_vol_l').innerText = volL.toFixed(3);
+                    document.getElementById('am2_vol_ml').innerText = (volL * 1000).toFixed(0);
+                }
+            } else {
+                if(document.getElementById('am2_vol_l')) {
+                    document.getElementById('am2_vol_l').innerText = "0.000";
+                    document.getElementById('am2_vol_ml').innerText = "0";
+                }
         window.onload = function() { 
             updateDoseUI(); 
             toggleComorbidState(); 
