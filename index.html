@@ -3875,8 +3875,6 @@
                     document.getElementById('am2_vol_ml').innerText = "N/A";
                     return;
                 }
-            }
-        }
                 
                 const volL = (deltaNa * tbw) / denominator;
                 
@@ -3892,6 +3890,9 @@
                     document.getElementById('am2_vol_l').innerText = "0.000";
                     document.getElementById('am2_vol_ml').innerText = "0";
                 }
+            }
+        }
+
         window.onload = function() { 
             updateDoseUI(); 
             toggleComorbidState(); 
@@ -3923,7 +3924,7 @@
                 if(el) el.addEventListener('keypress', function(e) { if (e.key === 'Enter') { e.preventDefault(); calculateABG(); } });
             });
 
-            /// Auto select fluid drop set by weight
+            // Auto select fluid species by weight
             document.getElementById('fluidWeight').addEventListener('input', function(e) {
                 const w = parseFloat(e.target.value);
                 const dropSetSelect = document.getElementById('fluidDropSet');
