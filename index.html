@@ -3875,6 +3875,8 @@
                     document.getElementById('am2_vol_ml').innerText = "N/A";
                     return;
                 }
+            }
+        }
                 
                 const volL = (deltaNa * tbw) / denominator;
                 
@@ -3921,15 +3923,20 @@
                 if(el) el.addEventListener('keypress', function(e) { if (e.key === 'Enter') { e.preventDefault(); calculateABG(); } });
             });
 
-            // Auto select fluid species by weight
+            /// Auto select fluid drop set by weight
             document.getElementById('fluidWeight').addEventListener('input', function(e) {
                 const w = parseFloat(e.target.value);
-                const speciesSelect = document.getElementById('fluidSpecies');
-                const isComorbid = document.getElementById('fluidComorbidGlobal').checked;
-                if (!isNaN(w) && w > 0 && !isComorbid) {
-                    if (w < 10) speciesSelect.value = "60";
-                    else if (w <= 25) speciesSelect.value = "50";
-                    else speciesSelect.value = "40";
+                const dropSetSelect = document.getElementById('fluidDropSet');
+                
+                if (!isNaN(w) && w > 0) {
+                    // ถ้าน้ำหนักน้อยกว่า 10 kg ให้ปรับเป็น Micro set (60 drops/mL)
+                    if (w < 10) {
+                        dropSetSelect.value = "60"; 
+                    } 
+                    // ถ้าน้ำหนักตั้งแต่ 10 kg ขึ้นไป ให้ปรับเป็น Macro set (20 drops/mL)
+                    else {
+                        dropSetSelect.value = "20"; 
+                    }
                 }
             });
         };
